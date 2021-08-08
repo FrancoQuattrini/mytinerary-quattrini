@@ -279,7 +279,7 @@ div.container {
 }
 
 .pictures:hover{
-  border: 2.3px solid rgb(233, 51, 193);
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .container-cities {
@@ -307,10 +307,26 @@ div.container-fluid {
   background-color: rgb(74, 54, 145);
 }
 
-.carousel-control-next-icon, .carousel-control-prev-icon {
-}
-
 .sr-only {
   display: none;
 }
 
+.logo-footer {
+  height: 5rem;
+  align-self: center;
+}
+
+.redes-footer {
+  height: 3rem;
+  padding-right: 2rem;
+}
+
+.footer-text {
+  font-weight: 600;
+}
+
+a.footer-text {
+  color: #d144b3;
+  padding-bottom: 1rem;
+  text-decoration: none;
+}
