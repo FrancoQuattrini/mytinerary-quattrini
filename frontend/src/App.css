@@ -62,6 +62,7 @@ body {
 
 .page-section {
   padding: 8rem 0;
+  background-color: white;
 }
 
 .text-white-75 {
@@ -81,7 +82,7 @@ hr.divider {
   height: 0.2rem;
   max-width: 3.25rem;
   margin: 1.5rem auto;
-  background-color: #f4623a;
+  background-color: #ffffff;
   opacity: 1;
 }
 
@@ -223,6 +224,7 @@ img.logo {
 h1#titleLogo {
   font-size: 60px;
   font-weight: 600;
+  text-shadow: 1px 1px 2px black
 }
 
 img.logoUser {
@@ -231,7 +233,7 @@ img.logoUser {
 }
 
 #textLogo {
-  background-color: rgba(161, 21, 131, 0.589);
+  text-shadow: 1px 1px 2px black
 }
 
 #now {
@@ -248,7 +250,7 @@ img.logoUser {
 }
 
 img.family {
-  align-items: center;
+  margin-top: 3rem;
 }
 
 div.container {
@@ -257,7 +259,7 @@ div.container {
 }
 
 .carousel{
-  height: 90vh;
+  height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,12 +297,20 @@ h1.titleCities {
 
 h2.popMy {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 600;
-  margin-top: 15px;
-  color: rgb(199, 70, 171);
+  padding-top: 3rem;
+  color: white;
 }
 
 div.container-fluid {
-  background-color: rgb(240, 206, 168);
+  background-color: rgb(74, 54, 145);
 }
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+}
+
+.sr-only {
+  display: none;
+}
+

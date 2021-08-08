@@ -5,17 +5,15 @@ import family from "../assets/familia.png"
 class Calltoaction extends React.Component {
     render () {
         return (
-            <section class="page-section" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 text-center">
+            <section className="page-section" id="about">
+            <div className="container px-4 px-lg-5">
+                <div className="row gx-4 gx-lg-5 justify-content-center">
+                    <div className="col-lg-8 text-center">
                         <h2 id="now" className="mb-4">Now, it is your decision. Just choose your destination!</h2>
-                        <hr class="divider divider-light" />
+                        <hr className="divider divider-light" />
                         <Link id="botonCTA" className="btn btn-light btn-xl" to="/cities">CLICK HERE</Link>
                     </div>
-                    <div className="container">
-                    <img className="family" src={family}></img>
-                    </div>
+                    <img className="family col-lg-6" src={family} alt="family"></img>
                 </div>
             </div>
         </section>

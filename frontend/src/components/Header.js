@@ -16,7 +16,7 @@ class Nav extends React.Component {
                         <li className="nav-item"><NavLink className="nav-link" to="/signUp">Sign Up</NavLink></li>
                         <li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
                     </ul>
-                    <img className="logoUser" src={iconUser}></img>
+                    <img className="logoUser" src={iconUser} alt="iconUser"></img>
                 </div>
             </div>
             </nav>
