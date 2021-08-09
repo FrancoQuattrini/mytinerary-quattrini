@@ -16,10 +16,10 @@ class Footer extends React.Component {
                             <h3>MYtinerary</h3>
                         </div>
                         <div className="col-12 col-lg-4 d-flex align-items-center justify-content-around pt-5">
-                        <a target="_blank" href="facebook"><img className="redes-footer" src={facebook} alt="iconUser"></img></a>
-                        <a target="_blank" href="instagram"><img className="redes-footer" src={instagram} alt="iconUser"></img></a>
-                        <a target="_blank" href="pinterest"><img className="redes-footer" src={pinterest} alt="iconUser"></img></a>
-                        <a target="_blank" href="twitter"><img className="redes-footer" src={twitter} alt="iconUser"></img></a>
+                        <a target="_blank" href="https://www.facebook.com/BaseBarambioAntartidaArgentina/"><img className="redes-footer" src={facebook} alt="iconUser"></img></a>
+                        <a target="_blank" href="https://www.instagram.com/"><img className="redes-footer" src={instagram} alt="iconUser"></img></a>
+                        <a target="_blank" href="https://ar.pinterest.com/"><img className="redes-footer" src={pinterest} alt="iconUser"></img></a>
+                        <a target="_blank" href="https://twitter.com/base_marambio/"><img className="redes-footer" src={twitter} alt="iconUser"></img></a>
                         </div>
                         <div className="col-12 col-lg-4 d-flex flex-column align-items-center justify-content-center pt-5">
                             <p className="footer-text">Base Marambio, La Antartida</p>
