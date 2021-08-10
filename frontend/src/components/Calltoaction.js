@@ -11,7 +11,7 @@ class Calltoaction extends React.Component {
                     <div className="col-lg-8 text-center">
                         <h2 id="now" className="mb-4">Now, it is your decision. Just choose your destination!</h2>
                         <hr className="divider divider-light" />
-                        <Link id="botonCTA" className="btn btn-light btn-xl" to="/cities">CLICK HERE</Link>
+                        <Link id="botonCTA" className="btn btn-light btn-xl" to="/cities" onClick={() => window.scrollTo(0,0)}>CLICK HERE</Link>
                     </div>
                     <img className="family col-lg-6" src={family} alt="family"></img>
                 </div>

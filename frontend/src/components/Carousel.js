@@ -23,7 +23,7 @@ const items = [
   
   
     [3,   {title: "Las Vegas", img: "https://i.postimg.cc/G2F3PgQN/LasVegas.jpg", id: 9},
-          {title: "El Cairo", img: "https://i.postimg.cc/tJcRyPn8/ElCairo.jpg", id: 10},
+          {title: "Cairo", img: "https://i.postimg.cc/tJcRyPn8/ElCairo.jpg", id: 10},
           {title: "Madrid", img: "https://i.postimg.cc/3JJrpBDS/Madrid.jpg", id: 11},
           {title: "London", img: "https://i.postimg.cc/XYtnR61m/London.jpg", id: 12}
     ]

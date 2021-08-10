@@ -278,6 +278,24 @@ div.container {
   align-items: center;
 }
 
+@media (max-width: 575.98px) {
+  .carousel {
+    height: 185vh;
+  }
+  .pictures {
+    width: 65vw;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .carousel {
+    height: 185vh;
+  }
+  .pictures {
+    width: 65vw;
+  }
+}
+
 .pictures:hover{
   border: 2px solid rgb(255, 255, 255);
 }
@@ -315,6 +333,12 @@ div.container-fluid {
 .logo-footer {
   height: 5rem;
   align-self: center;
+}
+
+.links-footer {
+  height: 3.5rem;
+  align-self: center;
+  margin: 10px;
 }
 
 .redes-footer {

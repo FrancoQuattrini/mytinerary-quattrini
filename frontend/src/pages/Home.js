@@ -2,7 +2,7 @@ import Header from "../components/Header"
 import Hero from "../components/Hero"
 import Calltoaction from "../components/Calltoaction"
 import Footer from "../components/Footer"
-import Carrousel from "../components/Carrousel"
+import Carousel from "../components/Carousel"
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
        <Header/>
        <Hero/>
        <Calltoaction/>
-       <Carrousel/>
+       <Carousel/>
        <Footer/>
        </>
     )
