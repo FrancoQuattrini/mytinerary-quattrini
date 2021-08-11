@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import iconUser from "../assets/iconuser1.png"
 
-class Nav extends React.Component {
+class Header extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -24,4 +24,4 @@ class Nav extends React.Component {
     }
 }
 
-export default Nav
+export default Header

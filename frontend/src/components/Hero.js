@@ -3,7 +3,7 @@ import logo from "../assets/logo1.png"
 import backgroundimg from "../assets/fondo.jpg"
 import video from "../assets/earth.mp4"
 
-class Header extends React.Component {
+class Hero extends React.Component {
     render () {
         return (
         <>
@@ -43,5 +43,5 @@ class Header extends React.Component {
     }
 }
 
-export default Header
+export default Hero
 
