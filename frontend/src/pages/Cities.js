@@ -1,17 +1,17 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-import HeroCities from "../components/HeroCities"
-import CityData from "../components/CityData"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import HeroCities from "../components/HeroCities";
+import CitiesData from "../components/CitiesData";
 
 const Cities = () => {
-    return (
-        <>
-       <Header/>
-       <HeroCities/>
-       <CityData/>
-       <Footer/>
-       </>
-    )
-}
+   return (
+      <>
+         <Header />
+         <HeroCities />
+         <CitiesData />
+         <Footer />
+      </>
+   );
+};
 
-export default Cities
+export default Cities;
