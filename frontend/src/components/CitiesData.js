@@ -30,7 +30,11 @@ const CityData = () => {
                <div className="col-12 text-center">
                   <div className="d-flex flex-column justify-content-center align-items-center">
                      <h2 className="h2Cities">Find your destiny ↓</h2>
-                     <img className="col-12 col-md-8" src={imgSearch} alt="imgSearch"></img>
+                     <img
+                        className="col-12 col-md-8"
+                        src={imgSearch}
+                        alt="imgSearch"
+                     ></img>
                      <input
                         className="search col-6"
                         type="search"
@@ -39,23 +43,23 @@ const CityData = () => {
                      ></input>
                      <hr id="dividerCities" className="divider" />
                   </div>
-                  <div className="backCard p-2 pt-5">
-                     {citiesSearch.map((city) => {
-                        return <CardCity city={city} key={city.name} />;
-                     })}
-                  </div>
-                  <div className="d-flex mt-5 justify-content-center align-items-center">
-                     <Link
-                        id="botonCTA"
-                        className="btn btn-light btn-xl"
-                        to="/"
-                        onClick={() => window.scrollTo(0, 0)}
-                     >
-                        Back to Home
-                     </Link>
-                  </div>
                </div>
             </div>
+         </div>
+         <div className="backCard p-2 pt-5">
+            {citiesSearch.map((city) => {
+               return <CardCity city={city} key={city.name} />;
+            })}
+         </div>
+         <div className="d-flex mt-5 justify-content-center align-items-center">
+            <Link
+               id="botonCTA"
+               className="btn btn-light btn-xl"
+               to="/"
+               onClick={() => window.scrollTo(0, 0)}
+            >
+               Back to Home
+            </Link>
          </div>
       </section>
    );

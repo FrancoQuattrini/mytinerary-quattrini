@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import HeroCity from "../components/HeroCity";
+import HeroInfoCity from "../components/HeroInfoCity";
+import { Link } from "react-router-dom";
 
 const InfoCity = (props) => {
    const [city, setCity] = useState({});
@@ -12,13 +13,21 @@ const InfoCity = (props) => {
          .then((res) => setCity(res.data.response));
       //eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
-
    return (
       <>
          <Header></Header>
-         <HeroCity></HeroCity>
-         <h1>YO SOY INFO CITY</h1>
-         <h2>{city.name}</h2>
+         <HeroInfoCity city={city}></HeroInfoCity>
+         <div className="underC d-flex flex-column align-items-center justify-content-center">
+            <h1>UNDER CONSTRUCTION</h1>
+            <Link
+               id="botonCTA"
+               className="btn btn-light btn-xl mt-5"
+               to="/cities"
+               onClick={() => window.scrollTo(0, 0)}
+            >
+               Back To Cities
+            </Link>
+         </div>
          <Footer></Footer>
       </>
    );

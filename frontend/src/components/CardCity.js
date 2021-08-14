@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 const CardCity = (props) => {
-   const { id, name, country, img, description } = props.city;
+   const { _id, name, country, img, description } = props.city;
    const ref = useRef();
    return (
       <div className="container mb-5">
-         <Link to={`/infoCity/${id}`} style={{ textDecoration: "none" }}>
+         <Link
+            to={`/infoCity/${_id}`}
+            style={{ textDecoration: "none" }}
+            onClick={() => window.scrollTo(0, 0)}
+         >
             <Flippy
                className="flippy"
                flipOnHover={true}
