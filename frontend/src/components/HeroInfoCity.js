@@ -28,18 +28,18 @@ const HeroInfoCity = (props) => {
             </div>
          </div>
          <div className="container-fluid">
-            <div className="row py-5">
+            <div className="row p-5">
                <div className="col-12 col-lg-3 d-flex flex-column align-items-center justify-content-center pt-3">
                   <div className="d-flex align-items-center justify-content-center pb-3">
                      <img
-                        className="logo-city-info px-4"
+                        className="logo-city-info flag"
                         src={flag}
                         alt="flag"
                      ></img>
-                     <h3>{country}</h3>
+                     <h3 className="px-4">{country}</h3>
                   </div>
                </div>
-               <div className="col-12 col-lg-3 d-flex align-items-center justify-content-around pt-3">
+               <div className="col-12 col-lg-3 d-flex flex-column align-items-center justify-content-center pt-3">
                   <div className="d-flex align-items-center justify-content-center pb-3">
                      <img
                         className="logo-city-info px-4"

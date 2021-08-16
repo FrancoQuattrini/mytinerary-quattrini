@@ -1,20 +1,35 @@
 import React, { useState } from "react";
 import CardCity from "./CardCity";
 import imgSearch from "../assets/lupaMundo.png";
+import notFoundimg from "../assets/notFound.png";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Logo from "../assets/logo1.png";
 
 const CityData = () => {
    const [cities, setCities] = useState([]);
+   const [loading, setLoading] = useState(true);
    const [citiesSearch, setCitiesSearch] = useState([]);
 
    useEffect(() => {
+      setLoading(true);
       axios.get("http://localhost:4000/api/cities").then((res) => {
          setCities(res.data.response);
          setCitiesSearch(res.data.response);
+         setLoading(false);
       });
    }, []);
+
+   if (loading) {
+      return (
+         <div className="container-fluid load d-flex flex-column justify-content-center align-items-center">
+            <h2 className="loading text-center">Loading</h2>
+            <img className="imgLoading" src={Logo} alt="Loader"></img>
+            <h2 className="loading text-center">Please wait</h2>
+         </div>
+      );
+   }
 
    const searchHandler = (e) => {
       const citiesFilter = cities.filter((city) =>
@@ -31,12 +46,12 @@ const CityData = () => {
                   <div className="d-flex flex-column justify-content-center align-items-center">
                      <h2 className="h2Cities">Find your destiny ↓</h2>
                      <img
-                        className="col-12 col-md-8"
+                        className="col-12 col-md-7"
                         src={imgSearch}
                         alt="imgSearch"
                      ></img>
                      <input
-                        className="search col-6"
+                        className="search col-12 col-md-6"
                         type="search"
                         placeholder="Search here ..."
                         onChange={searchHandler}
@@ -47,9 +62,22 @@ const CityData = () => {
             </div>
          </div>
          <div className="backCard p-2 pt-5">
-            {citiesSearch.map((city) => {
-               return <CardCity city={city} key={city.name} />;
-            })}
+            {citiesSearch.length === 0 ? (
+               <div className="container d-flex flex-column align-items-center justify-content-center">
+                  <h2 className="h2Search col-12 col-md-9 text-center">
+                     Sorry, it seems that what you are looking for cannot be
+                     found.
+                  </h2>
+                  <img className="imgNF" src={notFoundimg} alt="notFound"></img>
+                  <h2 className="searchB col-12 col-md-9 text-center">
+                     Try another please...
+                  </h2>
+               </div>
+            ) : (
+               citiesSearch.map((city) => {
+                  return <CardCity city={city} key={city.name} />;
+               })
+            )}
          </div>
          <div className="d-flex mt-5 justify-content-center align-items-center">
             <Link

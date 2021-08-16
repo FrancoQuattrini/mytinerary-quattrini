@@ -470,8 +470,8 @@ a.footer-text {
 }
 
 .underC {
-   min-height: 50vh;
-   background-color: rgb(14, 14, 122);
+   min-height: 70vh;
+   background-color: rgb(0, 0, 0);
 }
 
 .underC h1 {
@@ -480,16 +480,21 @@ a.footer-text {
 
 .error404 {
    min-height: 100vh;
-   background-color: rgb(14, 4, 122);
+   width: 100%;
+   background-color: rgb(255, 255, 255);
 }
 
-h2#error {
-   color: white;
+h2.error,
+.error2 {
+   color: rgb(255, 0, 0);
    font-weight: 600;
+   font-size: 3rem;
+   text-align: center;
+   background-color: rgb(0, 0, 0);
 }
 
-.imgError404 {
-   height: 20rem;
+.error2 {
+   font-weight: normal;
 }
 
 #headerCities {
@@ -515,7 +520,7 @@ h2#error {
 
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
    .masthead {
-      height: 20vh !important;
+      height: 10vh !important;
    }
 }
 
@@ -547,8 +552,9 @@ h2#error {
 
 .description {
    font-size: 3.7vmin;
-   color: white;
-   text-shadow: -1px 1px rgb(185, 51, 202);
+   color: #8019a8;
+   font-weight: 600;
+   text-shadow: -1px 1px 0px #ffffff;
 }
 
 @media (max-width: 991.98px) {
@@ -574,10 +580,48 @@ h2#error {
 }
 
 .backCard {
-   background-color: rgb(74, 54, 145);
+   background-color: rgba(227, 227, 228, 0.801);
    width: 100%;
 }
 
 .cityHead {
    height: 20vh !important;
+}
+
+.flag {
+   -webkit-box-shadow: 0px 0px 11px -3px rgba(138, 64, 141, 0.58);
+   -moz-box-shadow: 0px 0px 11px -3px rgba(138, 64, 141, 0.58);
+   box-shadow: 0px 0px 11px -3px rgba(138, 64, 141, 0.58);
+}
+
+.imgNF {
+   height: 22rem;
+}
+
+.h2Search,
+.searchB {
+   font-size: 5vmin;
+   color: rgb(245, 76, 222);
+}
+
+.searchB {
+   font-size: 7vmin;
+   padding: 1rem 0;
+}
+
+.load {
+   height: 70vh;
+}
+
+.imgLoading {
+   height: 10rem;
+   margin: 1rem;
+   margin-bottom: 1.5rem;
+}
+
+.loading {
+   color: rgb(209, 30, 200);
+   font-size: 7vmin;
+   width: 100%;
+   padding: 5px;
 }

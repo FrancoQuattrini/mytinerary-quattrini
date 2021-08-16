@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroInfoCity from "../components/HeroInfoCity";
 import { Link } from "react-router-dom";
+import UnderConstruction from "../assets/UnderConstruction.jpg";
 
 const InfoCity = (props) => {
    const [city, setCity] = useState({});
@@ -17,8 +18,12 @@ const InfoCity = (props) => {
       <>
          <Header></Header>
          <HeroInfoCity city={city}></HeroInfoCity>
-         <div className="underC d-flex flex-column align-items-center justify-content-center">
-            <h1>UNDER CONSTRUCTION</h1>
+         <div className="underC container-fluid p-5 d-flex flex-column align-items-center justify-content-center">
+            <img
+               className="col-12 col-md-6"
+               src={UnderConstruction}
+               alt="UnderConstruction"
+            ></img>
             <Link
                id="botonCTA"
                className="btn btn-light btn-xl mt-5"

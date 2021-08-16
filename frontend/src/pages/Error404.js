@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
-import imgError404 from "../assets/error404.png";
+import img from "../assets/astronaut.gif";
 
 const Error404 = () => {
    return (
-      <div className="error404 d-flex flex-column justify-content-center align-items-center">
-         <img className="imgError404" src={imgError404} alt="imgError"></img>
-         <h2 id="error" className="mb-4">
-            ERROR 404!
-         </h2>
-         <h2 id="error" className="mb-4">
-            Page not found
-         </h2>
-         <hr className="divider divider-light" />
+      <div className="error404 container-fluid p-5 d-flex flex-column justify-content-center align-items-center">
+         <h2 className="error col-12">ERROR 404</h2>
+         <h2 className="error2 col-12">Page not found!</h2>
+         <img
+            className="imgError404 col-12 col-md-5"
+            src={img}
+            alt="imgError"
+         ></img>
          <Link id="botonCTA" className="btn btn-light btn-xl" to="/">
             BACK TO HOME
          </Link>
