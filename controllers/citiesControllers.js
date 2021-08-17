@@ -14,17 +14,7 @@ const citiesControllers = {
    },
 
    postCity: (req, res) => {
-      const cityToPost = new City({
-         name: req.body.name,
-         country: req.body.country,
-         description: req.body.description,
-         img: req.body.img,
-         img2: req.body.img2,
-         flag: req.body.flag,
-         language: req.body.language,
-         local_currency: req.body.local_currency,
-         estimated_population: req.body.estimated_population,
-      })
+      const cityToPost = new City({ ...req.body })
       cityToPost
          .save()
          .then(() => res.json({ success: true, response: city }))
