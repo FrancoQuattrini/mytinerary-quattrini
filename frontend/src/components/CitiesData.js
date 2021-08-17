@@ -19,11 +19,10 @@ const CityData = (props) => {
             if (res.data.success) {
                setCities(res.data.response)
                setCitiesSearch(res.data.response)
+               setLoading(false)
             } else {
-               console.log(res.data.response)
                props.history.push("/error")
             }
-            setLoading(false)
          })
          .catch((err) => {
             console.log(err)

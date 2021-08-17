@@ -8,7 +8,7 @@ const Cities = (props) => {
       <>
          <Header />
          <HeroCities />
-         <CitiesData {...props} />
+         <CitiesData />
          <Footer />
       </>
    )
