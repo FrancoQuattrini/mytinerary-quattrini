@@ -11,45 +11,6 @@ video {
    z-index: -10;
 }
 
-.App {
-   text-align: center;
-}
-
-.App-logo {
-   height: 40vmin;
-   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-   .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-   }
-}
-
-.App-header {
-   background-color: #282c34;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   font-size: calc(10px + 2vmin);
-   color: white;
-}
-
-.App-link {
-   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-   from {
-      transform: rotate(0deg);
-   }
-   to {
-      transform: rotate(360deg);
-   }
-}
-
 html {
    height: 100%;
    scroll-padding-top: calc(4.5rem - 1px);
@@ -194,99 +155,6 @@ header.masthead .h1 {
    header.masthead .h1 {
       font-size: 3.5rem;
    }
-}
-
-#portfolio .container-fluid,
-#portfolio .container-sm,
-#portfolio .container-md,
-#portfolio .container-lg,
-#portfolio .container-xl,
-#portfolio .container-xxl {
-   max-width: 1920px;
-}
-#portfolio .container-fluid .portfolio-box,
-#portfolio .container-sm .portfolio-box,
-#portfolio .container-md .portfolio-box,
-#portfolio .container-lg .portfolio-box,
-#portfolio .container-xl .portfolio-box,
-#portfolio .container-xxl .portfolio-box {
-   position: relative;
-   display: block;
-}
-#portfolio .container-fluid .portfolio-box .portfolio-box-caption,
-#portfolio .container-sm .portfolio-box .portfolio-box-caption,
-#portfolio .container-md .portfolio-box .portfolio-box-caption,
-#portfolio .container-lg .portfolio-box .portfolio-box-caption,
-#portfolio .container-xl .portfolio-box .portfolio-box-caption,
-#portfolio .container-xxl .portfolio-box .portfolio-box-caption {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   bottom: 0;
-   text-align: center;
-   opacity: 0;
-   color: #fff;
-   background: rgba(244, 98, 58, 0.9);
-   transition: opacity 0.25s ease;
-   text-align: center;
-}
-#portfolio
-   .container-fluid
-   .portfolio-box
-   .portfolio-box-caption
-   .project-category,
-#portfolio
-   .container-sm
-   .portfolio-box
-   .portfolio-box-caption
-   .project-category,
-#portfolio
-   .container-md
-   .portfolio-box
-   .portfolio-box-caption
-   .project-category,
-#portfolio
-   .container-lg
-   .portfolio-box
-   .portfolio-box-caption
-   .project-category,
-#portfolio
-   .container-xl
-   .portfolio-box
-   .portfolio-box-caption
-   .project-category,
-#portfolio
-   .container-xxl
-   .portfolio-box
-   .portfolio-box-caption
-   .project-category {
-   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
-   font-size: 0.85rem;
-   font-weight: 600;
-   text-transform: uppercase;
-}
-#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-sm .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-md .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-lg .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-xl .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-xxl .portfolio-box .portfolio-box-caption .project-name {
-   font-size: 1.2rem;
-}
-#portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-sm .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-md .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-lg .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-xl .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
-   opacity: 1;
 }
 
 img.logo {
@@ -486,7 +354,7 @@ a.footer-text {
 
 h2.error,
 .error2 {
-   color: rgb(255, 0, 0);
+   color: rgb(250, 246, 2);
    font-weight: 600;
    font-size: 3rem;
    text-align: center;
@@ -552,9 +420,9 @@ h2.error,
 
 .description {
    font-size: 3.7vmin;
-   color: #8019a8;
+   color: #ffffff;
    font-weight: 600;
-   text-shadow: -1px 1px 0px #ffffff;
+   text-shadow: -1px 1px 0px #000000;
 }
 
 @media (max-width: 991.98px) {
@@ -624,4 +492,8 @@ h2.error,
    font-size: 7vmin;
    width: 100%;
    padding: 5px;
+}
+
+.load-infoc {
+   height: 100vh;
 }

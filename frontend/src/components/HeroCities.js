@@ -1,6 +1,6 @@
-import React from "react";
-import backgroundimg from "../assets/backCities.jpg";
-import video from "../assets/earthIN.mp4";
+import React from "react"
+import backgroundimg from "../assets/backCities.jpg"
+import video from "../assets/earthIN.mp4"
 
 class HeroCities extends React.Component {
    render() {
@@ -54,8 +54,8 @@ class HeroCities extends React.Component {
                </div>
             </header>
          </>
-      );
+      )
    }
 }
 
-export default HeroCities;
+export default HeroCities

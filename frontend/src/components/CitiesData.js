@@ -1,42 +1,53 @@
-import React, { useState } from "react";
-import CardCity from "./CardCity";
-import imgSearch from "../assets/lupaMundo.png";
-import notFoundimg from "../assets/notFound.png";
-import { useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import Logo from "../assets/logo1.png";
+import React, { useState } from "react"
+import CardCity from "./CardCity"
+import imgSearch from "../assets/lupaMundo.png"
+import notFoundimg from "../assets/notFound.png"
+import { useEffect } from "react"
+import axios from "axios"
+import { Link } from "react-router-dom"
+import Logo from "../assets/astroLoad.gif"
 
-const CityData = () => {
-   const [cities, setCities] = useState([]);
-   const [loading, setLoading] = useState(true);
-   const [citiesSearch, setCitiesSearch] = useState([]);
+const CityData = (props) => {
+   const [cities, setCities] = useState([])
+   const [loading, setLoading] = useState(true)
+   const [citiesSearch, setCitiesSearch] = useState([])
 
    useEffect(() => {
-      setLoading(true);
-      axios.get("http://localhost:4000/api/cities").then((res) => {
-         setCities(res.data.response);
-         setCitiesSearch(res.data.response);
-         setLoading(false);
-      });
-   }, []);
+      axios
+         .get("http://localhost:4000/api/cities")
+         .then((res) => {
+            if (res.data.success) {
+               setCities(res.data.response)
+               setCitiesSearch(res.data.response)
+            } else {
+               console.log(res.data.response)
+               props.history.push("/error")
+            }
+            setLoading(false)
+         })
+         .catch((err) => {
+            console.log(err)
+            props.history.push("/error")
+         })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [])
 
    if (loading) {
       return (
-         <div className="container-fluid load d-flex flex-column justify-content-center align-items-center">
-            <h2 className="loading text-center">Loading</h2>
-            <img className="imgLoading" src={Logo} alt="Loader"></img>
-            <h2 className="loading text-center">Please wait</h2>
+         <div className="container load d-flex flex-column justify-content-center align-items-center p-5">
+            <h2 className="loading text-center col-11 p-3">Loading</h2>
+            <img className="col-12 col-md-6" src={Logo} alt="Loader"></img>
+            <h2 className="loading text-center col-11 p-3">Please wait</h2>
          </div>
-      );
+      )
    }
 
    const searchHandler = (e) => {
       const citiesFilter = cities.filter((city) =>
          city.name.toLowerCase().startsWith(e.target.value.toLowerCase().trim())
-      );
-      setCitiesSearch(citiesFilter);
-   };
+      )
+      setCitiesSearch(citiesFilter)
+   }
 
    return (
       <section className="page-section" id="about">
@@ -75,7 +86,7 @@ const CityData = () => {
                </div>
             ) : (
                citiesSearch.map((city) => {
-                  return <CardCity city={city} key={city.name} />;
+                  return <CardCity city={city} key={city.name} />
                })
             )}
          </div>
@@ -90,7 +101,7 @@ const CityData = () => {
             </Link>
          </div>
       </section>
-   );
-};
+   )
+}
 
-export default CityData;
+export default CityData

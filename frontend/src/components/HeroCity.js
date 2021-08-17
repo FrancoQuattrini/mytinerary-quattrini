@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "../assets/citiesIcon2.png";
-import backgroundimg from "../assets/backCities.jpg";
+import React from "react"
+import logo from "../assets/citiesIcon2.png"
+import backgroundimg from "../assets/backCities.jpg"
 
 class HeroCity extends React.Component {
    render() {
@@ -14,15 +14,18 @@ class HeroCity extends React.Component {
                <div className="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                   <div className="col-lg-12 align-self-end pb-5">
                      <img className="logo" src={logo} alt="logo"></img>
-                     <h1 id="titleLogo" className="text-white font-weight-bold pt-5">
+                     <h1
+                        id="titleLogo"
+                        className="text-white font-weight-bold pt-5"
+                     >
                         The world is yours!
                      </h1>
                   </div>
                </div>
             </div>
          </header>
-      );
+      )
    }
 }
 
-export default HeroCity;
+export default HeroCity

@@ -1,12 +1,12 @@
-import React from "react";
-import Logo1 from "../assets/logo1.png";
-import facebook from "../assets/facebook.png";
-import instagram from "../assets/instragram.png";
-import pinterest from "../assets/pinterest.png";
-import twitter from "../assets/twitter.png";
-import homeIcon from "../assets/homeIcon.png";
-import citiesIcon from "../assets/cityIcon.png";
-import { Link } from "react-router-dom";
+import React from "react"
+import Logo1 from "../assets/logo1.png"
+import facebook from "../assets/facebook.png"
+import instagram from "../assets/instragram.png"
+import pinterest from "../assets/pinterest.png"
+import twitter from "../assets/twitter.png"
+import homeIcon from "../assets/homeIcon.png"
+import citiesIcon from "../assets/cityIcon.png"
+import { Link } from "react-router-dom"
 
 class Footer extends React.Component {
    render() {
@@ -105,8 +105,8 @@ class Footer extends React.Component {
                </div>
             </div>
          </footer>
-      );
+      )
    }
 }
 
-export default Footer;
+export default Footer

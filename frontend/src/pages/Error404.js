@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import img from "../assets/astronaut.gif";
+import { Link } from "react-router-dom"
+import img from "../assets/astronaut.gif"
 
 const Error404 = () => {
    return (
@@ -15,7 +15,7 @@ const Error404 = () => {
             BACK TO HOME
          </Link>
       </div>
-   );
-};
+   )
+}
 
-export default Error404;
+export default Error404

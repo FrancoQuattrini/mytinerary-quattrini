@@ -1,6 +1,6 @@
-import languageImg from "../assets/language.png";
-import localCurrency from "../assets/localCurrency.png";
-import population from "../assets/population.png";
+import languageImg from "../assets/language.png"
+import localCurrency from "../assets/localCurrency.png"
+import population from "../assets/population.png"
 
 const HeroInfoCity = (props) => {
    const {
@@ -11,7 +11,7 @@ const HeroInfoCity = (props) => {
       flag,
       local_currency,
       estimated_population,
-   } = props.city;
+   } = props.city
    return (
       <>
          <div
@@ -72,7 +72,7 @@ const HeroInfoCity = (props) => {
             </div>
          </div>
       </>
-   );
-};
+   )
+}
 
-export default HeroInfoCity;
+export default HeroInfoCity

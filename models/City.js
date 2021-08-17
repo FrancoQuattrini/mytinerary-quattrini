@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const citySchema = new mongoose.Schema({
    name: { type: String, required: true },
@@ -10,8 +10,8 @@ const citySchema = new mongoose.Schema({
    language: { type: String, required: true },
    local_currency: { type: String, required: true },
    estimated_population: { type: String, required: true },
-});
+})
 
-const City = mongoose.model("city", citySchema);
+const City = mongoose.model("city", citySchema)
 
-module.exports = City;
+module.exports = City

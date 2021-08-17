@@ -1,15 +1,15 @@
-import React from "react";
-import Flippy, { FrontSide, BackSide } from "react-flippy";
-import { Link } from "react-router-dom";
-import { useRef } from "react";
+import React from "react"
+import Flippy, { FrontSide, BackSide } from "react-flippy"
+import { Link } from "react-router-dom"
+import { useRef } from "react"
 
 const CardCity = (props) => {
-   const { _id, name, country, img, description } = props.city;
-   const ref = useRef();
+   const { _id, name, country, img, description } = props.city
+   const ref = useRef()
    return (
       <div className="container mb-5">
          <Link
-            to={`/infoCity/${_id}`}
+            to={`/infocity/${_id}`}
             style={{ textDecoration: "none" }}
             onClick={() => window.scrollTo(0, 0)}
          >
@@ -27,8 +27,8 @@ const CardCity = (props) => {
                      backgroundSize: "cover",
                   }}
                >
-                  <h1 className="titleCard">{name}</h1>
-                  <h2 className="titleCard">{country}</h2>
+                  <h1 className="titleCard text-center">{name}</h1>
+                  <h2 className="titleCard text-center">{country}</h2>
                </FrontSide>
                <BackSide
                   style={{
@@ -37,13 +37,13 @@ const CardCity = (props) => {
                   }}
                >
                   <div className="container-fluid">
-                     <h2 className="description">{description}</h2>
+                     <h2 className="description text-center">{description}</h2>
                   </div>
                </BackSide>
             </Flippy>
          </Link>
       </div>
-   );
-};
+   )
+}
 
-export default CardCity;
+export default CardCity
