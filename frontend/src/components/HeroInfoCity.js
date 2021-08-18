@@ -31,42 +31,58 @@ const HeroInfoCity = (props) => {
             <div className="row p-5">
                <div className="col-12 col-lg-3 d-flex flex-column align-items-center justify-content-center pt-3">
                   <div className="d-flex align-items-center justify-content-center pb-3">
-                     <img
-                        className="logo-city-info flag"
-                        src={flag}
-                        alt="flag"
-                     ></img>
-                     <h3 className="px-4">{country}</h3>
+                     <div className="col-6 text-end">
+                        <img
+                           className="logo-city-info flag me-3"
+                           src={flag}
+                           alt="flag"
+                        ></img>
+                     </div>
+                     <div className="col-6 text-start">
+                        <h3 className="px-2">{country}</h3>
+                     </div>
                   </div>
                </div>
                <div className="col-12 col-lg-3 d-flex flex-column align-items-center justify-content-center pt-3">
-                  <div className="d-flex align-items-center justify-content-center pb-3">
-                     <img
-                        className="logo-city-info px-4"
-                        src={localCurrency}
-                        alt="iconCurrency"
-                     ></img>
-                     <h3>{local_currency}</h3>
+                  <div className="d-flex align-items-center justify-content-around pb-3">
+                     <div className="col-6 text-end">
+                        <img
+                           className="logo-city-info me-3"
+                           src={localCurrency}
+                           alt="iconCurrency"
+                        ></img>
+                     </div>
+                     <div className="col-6 text-start">
+                        <h3 className="px-2">{local_currency}</h3>
+                     </div>
                   </div>
                </div>
                <div className="col-12 col-lg-3 d-flex flex-column align-items-center justify-content-center pt-3">
-                  <div className="d-flex align-items-center justify-content-center pb-3">
-                     <img
-                        className="logo-city-info px-4"
-                        src={languageImg}
-                        alt="iconLanguage"
-                     ></img>
-                     <h3>{language}</h3>
+                  <div className="col-12 d-flex align-items-center justify-content-center pb-3">
+                     <div className="col-6 text-end">
+                        <img
+                           className="logo-city-info me-3"
+                           src={languageImg}
+                           alt="iconLanguage"
+                        ></img>
+                     </div>
+                     <div className="col-6 text-start">
+                        <h3 className="px-2">{language}</h3>
+                     </div>
                   </div>
                </div>
                <div className="col-12 col-lg-3 d-flex flex-column align-items-center justify-content-center pt-3">
-                  <div className="d-flex align-items-center justify-content-center pb-3">
-                     <img
-                        className="logo-city-info px-4"
-                        src={population}
-                        alt="iconPopulation"
-                     ></img>
-                     <h3>{estimated_population}</h3>
+                  <div className="col-12 d-flex align-items-center justify-content-center pb-3">
+                     <div className="col-6 text-end">
+                        <img
+                           className="logo-city-info me-3"
+                           src={population}
+                           alt="iconPopulation"
+                        ></img>
+                     </div>
+                     <div className="col-6 text-start">
+                        <h3 className="px-2">{estimated_population}</h3>
+                     </div>
                   </div>
                </div>
             </div>

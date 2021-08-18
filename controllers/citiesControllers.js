@@ -22,19 +22,15 @@ const citiesControllers = {
    },
 
    deleteCity: (req, res) => {
-      City.findOneAndDelete({ _id: req.params.id }).then(() =>
-         res
-            .json({ success: true, response: deleteCity })
-            .catch((err) => res.json({ success: false, response: err }))
-      )
+      City.findOneAndDelete({ _id: req.params.id })
+         .then(() => res.json({ success: true, response: deleteCity }))
+         .catch((err) => res.json({ success: false, response: err }))
    },
 
    modifyCity: (req, res) => {
-      City.findOneAndUpdate({ _id: req.params.id }, { ...req.body }).then(() =>
-         res
-            .json({ success: true, response: modifyCity })
-            .catch((err) => res.json({ success: false, response: err }))
-      )
+      City.findOneAndUpdate({ _id: req.params.id }, { ...req.body })
+         .then(() => res.json({ success: true, response: modifyCity }))
+         .catch((err) => res.json({ success: false, response: err }))
    },
 }
 

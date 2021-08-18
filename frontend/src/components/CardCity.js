@@ -36,7 +36,7 @@ const CardCity = (props) => {
                      backgroundSize: "cover",
                   }}
                >
-                  <div className="container-fluid">
+                  <div className="container-fluid description1">
                      <h2 className="description text-center">{description}</h2>
                   </div>
                </BackSide>
