@@ -54,7 +54,7 @@ const CityData = (props) => {
             <div className="row gx-4 gx-lg-5 justify-content-center">
                <div className="col-12 text-center">
                   <div className="d-flex flex-column justify-content-center align-items-center">
-                     <h2 className="h2Cities">Find your destiny ↓</h2>
+                     <h2 className="h2Cities">Find your destination ↓</h2>
                      <img
                         className="col-12 col-md-7"
                         src={imgSearch}

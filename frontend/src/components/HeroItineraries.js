@@ -2,7 +2,7 @@ import languageImg from "../assets/language.png"
 import localCurrency from "../assets/localCurrency.png"
 import population from "../assets/population.png"
 
-const HeroInfoCity = (props) => {
+const HeroItineraries = (props) => {
    const {
       name,
       country,
@@ -91,4 +91,4 @@ const HeroInfoCity = (props) => {
    )
 }
 
-export default HeroInfoCity
+export default HeroItineraries

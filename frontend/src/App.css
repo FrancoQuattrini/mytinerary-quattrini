@@ -354,7 +354,7 @@ a.footer-text {
 
 h2.error,
 .error2 {
-   color: rgb(250, 246, 2);
+   color: rgb(250, 1, 1);
    font-weight: 600;
    font-size: 3rem;
    text-align: center;
@@ -363,6 +363,7 @@ h2.error,
 
 .error2 {
    font-weight: normal;
+   color: yellow;
 }
 
 #headerCities {
@@ -503,4 +504,22 @@ h2.error,
 
 .load-infoc {
    height: 100vh;
+}
+
+.imgUser {
+   height: 7rem;
+   border-radius: 10%;
+}
+
+.verified {
+   height: 1.7rem;
+}
+
+.like {
+   height: 2.3rem;
+}
+
+.money {
+   height: 2rem;
+   padding: 0px 10px;
 }

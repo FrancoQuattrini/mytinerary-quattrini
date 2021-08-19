@@ -17,7 +17,7 @@ const citiesControllers = {
       const cityToPost = new City({ ...req.body })
       cityToPost
          .save()
-         .then(() => res.json({ success: true, response: city }))
+         .then((city) => res.json({ success: true, response: city }))
          .catch((err) => res.json({ success: false, response: err }))
    },
 

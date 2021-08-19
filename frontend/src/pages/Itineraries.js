@@ -2,13 +2,14 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import HeroInfoCity from "../components/HeroInfoCity"
+import HeroItineraries from "../components/HeroItineraries"
 import { Link } from "react-router-dom"
-import UnderConstruction from "../assets/UnderConstruction.jpg"
 import Logo from "../assets/astroLoad.gif"
+import Itinerary from "../components/Itinerary"
 
-const InfoCity = (props) => {
+const Itineraries = (props) => {
    const [city, setCity] = useState({})
+   const [itinerary, setItinerary] = useState({})
    const [loading, setLoading] = useState(true)
 
    useEffect(() => {
@@ -20,6 +21,19 @@ const InfoCity = (props) => {
                setLoading(false)
             } else {
                props.history.push("/error")
+            }
+         })
+         .catch((err) => {
+            console.log(err)
+            props.history.push("/error")
+         })
+
+      axios
+         .get(`http://localhost:4000/api/itineraries`)
+         .then((res) => {
+            if (res.data.success && res.data.response) {
+               setItinerary(res.data.response)
+               setLoading(false)
             }
          })
          .catch((err) => {
@@ -38,17 +52,16 @@ const InfoCity = (props) => {
          </div>
       )
    }
-
    return (
       <>
          <Header></Header>
-         <HeroInfoCity city={city}></HeroInfoCity>
+         <HeroItineraries city={city}></HeroItineraries>
+
          <div className="underC container-fluid p-5 d-flex flex-column align-items-center justify-content-center">
-            <img
-               className="col-12 col-md-6"
-               src={UnderConstruction}
-               alt="UnderConstruction"
-            ></img>
+            {itinerary.map((data) => {
+               return <Itinerary data={data} key={data.nameUser} />
+            })}
+
             <Link
                id="botonCTA"
                className="btn btn-light btn-xl mt-5"
@@ -63,4 +76,4 @@ const InfoCity = (props) => {
    )
 }
 
-export default InfoCity
+export default Itineraries

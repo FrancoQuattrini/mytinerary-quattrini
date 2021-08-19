@@ -9,7 +9,7 @@ const CardCity = (props) => {
    return (
       <div className="container mb-5">
          <Link
-            to={`/infocity/${_id}`}
+            to={`/itineraries/${_id}`}
             style={{ textDecoration: "none" }}
             onClick={() => window.scrollTo(0, 0)}
          >
