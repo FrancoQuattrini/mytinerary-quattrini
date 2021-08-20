@@ -3,7 +3,7 @@ import Footer from "../components/Footer"
 import HeroCities from "../components/HeroCities"
 import CitiesData from "../components/CitiesData"
 
-const Cities = (props) => {
+const Cities = () => {
    return (
       <>
          <Header />

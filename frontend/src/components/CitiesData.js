@@ -1,51 +1,52 @@
-import React, { useState } from "react"
+// import React, { useState } from "react"
 import CardCity from "./CardCity"
 import imgSearch from "../assets/lupaMundo.png"
 import notFoundimg from "../assets/notFound.png"
-import { useEffect } from "react"
-import axios from "axios"
 import { Link } from "react-router-dom"
-import Logo from "../assets/astroLoad.gif"
+// import Logo from "../assets/astroLoad.gif"
+import { useEffect } from "react"
+import { connect } from "react-redux"
+import citiesActions from "../redux/actions/citiesActions"
 
-const CityData = (props) => {
-   const [cities, setCities] = useState([])
-   const [loading, setLoading] = useState(true)
-   const [citiesSearch, setCitiesSearch] = useState([])
-
+const CitiesData = (props) => {
    useEffect(() => {
-      axios
-         .get("http://localhost:4000/api/cities")
-         .then((res) => {
-            if (res.data.success) {
-               setCities(res.data.response)
-               setCitiesSearch(res.data.response)
-               setLoading(false)
-            } else {
-               props.history.push("/error")
-            }
-         })
-         .catch((err) => {
-            console.log(err)
-            props.history.push("/error")
-         })
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+      props.getCities()
    }, [])
+   // const [cities, setCities] = useState([])
+   // const [loading, setLoading] = useState(true)
+   // const [citiesSearch, setCitiesSearch] = useState([])
 
-   if (loading) {
-      return (
-         <div className="container load d-flex flex-column justify-content-center align-items-center p-5">
-            <h2 className="loading text-center col-11 p-3">Loading</h2>
-            <img className="col-12 col-md-6" src={Logo} alt="Loader"></img>
-            <h2 className="loading text-center col-11 p-3">Please wait</h2>
-         </div>
-      )
-   }
+   // useEffect(() => {
+   //    axios
+   //       .get("http://localhost:4000/api/cities")
+   //       .then((res) => {
+   //          if (res.data.success) {
+   //             setCities(res.data.response)
+   //             setCitiesSearch(res.data.response)
+   //             setLoading(false)
+   //          } else {
+   //             props.history.push("/error")
+   //          }
+   //       })
+   //       .catch((err) => {
+   //          console.log(err)
+   //          props.history.push("/error")
+   //       })
+   //    // eslint-disable-next-line react-hooks/exhaustive-deps
+   // }, [])
+
+   // if (loading) {
+   //    return (
+   //       <div className="container load d-flex flex-column justify-content-center align-items-center p-5">
+   //          <h2 className="loading text-center col-11 p-3">Loading</h2>
+   //          <img className="col-12 col-md-6" src={Logo} alt="Loader"></img>
+   //          <h2 className="loading text-center col-11 p-3">Please wait</h2>
+   //       </div>
+   //    )
+   // }
 
    const searchHandler = (e) => {
-      const citiesFilter = cities.filter((city) =>
-         city.name.toLowerCase().startsWith(e.target.value.toLowerCase().trim())
-      )
-      setCitiesSearch(citiesFilter)
+      props.filterCities(e.target.value)
    }
 
    return (
@@ -72,7 +73,7 @@ const CityData = (props) => {
             </div>
          </div>
          <div className="backCard p-2 pt-5">
-            {citiesSearch.length === 0 ? (
+            {props.citiesSearch.length === 0 ? (
                <div className="container d-flex flex-column align-items-center justify-content-center">
                   <h2 className="h2Search col-12 col-md-9 text-center">
                      Sorry, it seems that what you are looking for cannot be
@@ -84,7 +85,7 @@ const CityData = (props) => {
                   </h2>
                </div>
             ) : (
-               citiesSearch.map((city) => {
+               props.citiesSearch.map((city) => {
                   return <CardCity city={city} key={city.name} />
                })
             )}
@@ -103,4 +104,15 @@ const CityData = (props) => {
    )
 }
 
-export default CityData
+const mapStateToProps = (state) => {
+   return {
+      citiesSearch: state.cities.citiesSearch,
+   }
+}
+
+const mapDispatchToProps = {
+   getCities: citiesActions.getCities,
+   filterCities: citiesActions.filterCities,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesData)

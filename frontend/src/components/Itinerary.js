@@ -28,6 +28,11 @@ const Itinerary = (props) => {
                      className="img-fluid rounded-start"
                      alt="imgaa"
                   ></img>
+                  <img
+                     src={img}
+                     className="img-fluid rounded-start"
+                     alt="imgaa"
+                  ></img>
                </div>
                <div className="col-md-8">
                   <div className="card-body p-5">
@@ -58,17 +63,27 @@ const Itinerary = (props) => {
                         ))}
                      </div>
                      <p className="card-text">{description}</p>
-
                      <h5 className="card-title ">
                         Price:
-                        {Array(price).fill(
-                           <img src={money} alt="money" className="money" />
-                        )}
+                        {Array(price)
+                           .fill(price)
+                           .map((price, index) => {
+                              return (
+                                 <img
+                                    src={money}
+                                    alt="money"
+                                    className="money"
+                                    key={index}
+                                 />
+                              )
+                           })}
                      </h5>
                      <h5 className="card-title ">Duration: {duration} hs</h5>
-                     <div className="">
-                        <h5 className="card-title d-flex">
-                           Languages:
+                     <div className="d-flex">
+                        <div>
+                           <h5>Languages:</h5>
+                        </div>
+                        <div className="d-flex">
                            {languages.map((language, index) => (
                               <p
                                  className="card-title text-muted ps-3"
@@ -77,7 +92,7 @@ const Itinerary = (props) => {
                                  {language}.
                               </p>
                            ))}
-                        </h5>
+                        </div>
                      </div>
 
                      <div className="d-flex pt-3 align-items-center justify-content-center">
