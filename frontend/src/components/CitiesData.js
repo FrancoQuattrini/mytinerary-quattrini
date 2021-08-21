@@ -4,13 +4,21 @@ import imgSearch from "../assets/lupaMundo.png"
 import notFoundimg from "../assets/notFound.png"
 import { Link } from "react-router-dom"
 // import Logo from "../assets/astroLoad.gif"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
 
 const CitiesData = (props) => {
+   const [loading, setLoading] = useState(true)
+
    useEffect(() => {
-      props.getCities()
+      async function getCities() {
+         let response = await props.getCities()
+         if (response.error) {
+            alert(response.error)
+         }
+      }
+      getCities()
    }, [])
    // const [cities, setCities] = useState([])
    // const [loading, setLoading] = useState(true)
