@@ -8,6 +8,7 @@ import Itinerary from "../components/Itinerary"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
 import itinerariesActions from "../redux/actions/itinerariesActions"
+import empty from "../assets/empty.png"
 
 const Itineraries = (props) => {
    const getCity = props.cities.find(
@@ -33,19 +34,6 @@ const Itineraries = (props) => {
             console.log(err)
             props.history.push("/error")
          })
-      // axios
-      //    .get(`http://localhost:4000/api/itineraries`)
-      //    .then((res) => {
-      //       if (res.data.success && res.data.response) {
-      //          setItineraries(res.data.response)
-      //          // setLoading(false)
-      //       }
-      //    })
-      //    .catch((err) => {
-      //       console.log(err)
-      //       props.history.push("/error")
-      //    })
-
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
@@ -69,7 +57,12 @@ const Itineraries = (props) => {
 
          <div className="underC container-fluid p-5 d-flex flex-column align-items-center justify-content-center">
             {props.itineraries.length === 0 ? (
-               <h1>NO ITINERARIES</h1>
+               <div className="container d-flex flex-column align-items-center justify-content-center">
+                  <h2 className="h2Search empty col-12 col-md-9 text-center">
+                     It seems there are no itineraries yet!.
+                  </h2>
+                  <img className="imgEmpty" src={empty} alt="imgEmpty"></img>
+               </div>
             ) : (
                props.itineraries.map((data) => {
                   return <Itinerary data={data} key={data.nameUser} />

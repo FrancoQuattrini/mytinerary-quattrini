@@ -27,53 +27,6 @@ const CitiesData = (props) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
-   // useEffect(() => {
-   //    // async function getCities() {
-   //       // try {
-   //          props.getCities()
-   //                   .then((res) => {
-   //          if (res.data.success) {
-   //             setLoading(false)
-   //          } else {
-   //             props.history.push("/error")
-   //          }
-   //       })
-   //       .catch((err) => {
-   //          console.log(err)
-   //          props.history.push("/error")
-   //       })
-   //       // } catch (error) {
-   //       //    alert(error)
-   //       //    props.history.push("/error")
-   //       // } finally {
-   //       //    setLoading(false)
-   //       // }
-   //    }
-   //    // getCities()
-   // }, [])
-   // const [cities, setCities] = useState([])
-   // const [loading, setLoading] = useState(true)
-   // const [citiesSearch, setCitiesSearch] = useState([])
-
-   // useEffect(() => {
-   //    axios
-   //       .get("http://localhost:4000/api/cities")
-   //       .then((res) => {
-   //          if (res.data.success) {
-   //             setCities(res.data.response)
-   //             setCitiesSearch(res.data.response)
-   //             setLoading(false)
-   //          } else {
-   //             props.history.push("/error")
-   //          }
-   //       })
-   //       .catch((err) => {
-   //          console.log(err)
-   //          props.history.push("/error")
-   //       })
-   //    // eslint-disable-next-line react-hooks/exhaustive-deps
-   // }, [])
-
    if (loading) {
       return (
          <div className="container load d-flex flex-column justify-content-center align-items-center m-5">

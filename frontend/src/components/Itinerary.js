@@ -20,140 +20,176 @@ const Itinerary = (props) => {
    } = props.data
    return (
       <>
-         <div className="blog-slider">
+         <div className="blog-slider mb-5 d-lg-none d-xl-none d-xxl-none">
             <div className="blog-slider__wrp swiper-wrapper">
                <div className="blog-slider__item swiper-slide">
                   <div className="blog-slider__img">
                      <img src={img} alt="aaaa"></img>
                   </div>
                   <div className="blog-slider__content">
-                     <div className="blog-slider__title">PEPE TOTO</div>
-                     <span className="blog-slider__code">
-                        San Isidro and Delta del Tigre tour
-                     </span>
-                     <span className="blog-slider__code">#AAAA #BBB #CCC</span>
-                     <div className="blog-slider__text">
-                        The historic city of San Isidro and the picturesque
-                        wetlands of the Delta del Tigre lie just north of Buenos
-                        Aires. On this visit, take the scenic route as you
-                        navigate the Rio de la Plata and the Tigre Delta,
-                        explore the city of Tigre, and then return to the city
-                        by minibus, stopping in San Isidro along the way.
+                     <img
+                        src={imgUser}
+                        className="imgUser mb-4"
+                        alt="imgUser"
+                     ></img>
+                     <div className="blog-slider__code">
+                        <span className="models nameUser">{nameUser}</span>
+
+                        <img
+                           src={verified}
+                           className="verified ms-3"
+                           alt="imgVerified"
+                        ></img>
                      </div>
-                     <span className="blog-slider__code">PRICE</span>
-                     <span className="blog-slider__code">DURATION</span>
-                     <span className="blog-slider__code">LANGUAGES</span>
-                     <span className="blog-slider__code">LIKE</span>
-                     <a href="#" className="blog-slider__button">
-                        VIEW MORE
-                     </a>
+
+                     <span className="blog-slider__title">{title}</span>
+                     <span className="blog-slider__code my-4">
+                        {hashtags.map((hashtag, index) => (
+                           <span className="blog-slider__code pe-3">
+                              {hashtag}
+                           </span>
+                        ))}
+                     </span>
+                     <div className="blog-slider__text">{description}</div>
+                     <span className="blog-slider__code">
+                        <span className="models pe-1">Price:</span>
+                        {Array(price)
+                           .fill(price)
+                           .map((price, index) => {
+                              return (
+                                 <img
+                                    src={money}
+                                    alt="money"
+                                    className="money"
+                                    key={index}
+                                 />
+                              )
+                           })}
+                     </span>
+                     <span className="blog-slider__code">
+                        <span className="models pe-3">Duration:</span>
+                        {duration} hs
+                     </span>
+                     <span className="blog-slider__code">
+                        <span className="models">Languages:</span>
+                        {languages.map((language, index) => (
+                           <p className="card-title mt-2" key={index}>
+                              {language}.
+                           </p>
+                        ))}
+                     </span>
+                     <img src={like} className="like mt-3" alt="imgLike"></img>
+                     <span className="blog-slider__code">{likes}</span>
+                     <div className="container col-12 flex-column align-items-center">
+                        <p></p>
+                        {viewText && (
+                           <div>
+                              <div className="container col-12">
+                                 <img
+                                    className="col-12 col-md-6 mb-5"
+                                    src={UnderConstruction}
+                                    alt="UnderConstruction"
+                                 ></img>
+                              </div>
+                           </div>
+                        )}
+                        <button
+                           className="blog-slider__button"
+                           type="button"
+                           onClick={() => setViewText(!viewText)}
+                        >
+                           {viewText ? "View Less" : "View More"}
+                        </button>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
 
-         <div className="container py-4">
-            <div className="card mb-3">
-               <div className="row no-gutters">
-                  <div className="col-md-4">
-                     <img
-                        src={img}
-                        className="img-fluid rounded-start p-1"
-                        alt="imgaa"
-                     ></img>
+         <div className="blog-slider mb-5 d-none d-lg-block">
+            <div className="blog-slider__wrp swiper-wrapper">
+               <div className="blog-slider__item swiper-slide">
+                  <div className="blog-slider__img">
+                     <img src={img} alt="aaaa"></img>
                   </div>
-                  <div className="col-12 col-md-8">
-                     <div className="card-body p-5">
-                        <div className="d-flex align-items-center">
-                           <img
-                              src={imgUser}
-                              className="imgUser me-5"
-                              alt="imgUser"
-                           ></img>
-                           <div className="d-flex align-items-center">
-                              <h2 className="card-title pe-3">{nameUser}</h2>
-                              <img
-                                 src={verified}
-                                 className="verified"
-                                 alt="imgVerified"
-                              ></img>
-                           </div>
-                        </div>
-                        <h3 className="card-title pt-4">{title}</h3>
-                        <div className="card-title d-flex">
-                           {hashtags.map((hashtag, index) => (
-                              <h5
-                                 className="card-title text-muted pe-3"
-                                 key={index}
-                              >
-                                 {hashtag}
-                              </h5>
-                           ))}
-                        </div>
-                        <p className="card-text">{description}</p>
-                        <h5 className="card-title ">
-                           Price:
-                           {Array(price)
-                              .fill(price)
-                              .map((price, index) => {
-                                 return (
-                                    <img
-                                       src={money}
-                                       alt="money"
-                                       className="money"
-                                       key={index}
-                                    />
-                                 )
-                              })}
-                        </h5>
-                        <h5 className="card-title ">Duration: {duration} hs</h5>
-                        <div className="d-flex container">
-                           <div className="">
-                              <h5>Languages:</h5>
-                           </div>
-                           <div className="container">
-                              {languages.map((language, index) => (
-                                 <p
-                                    className="card-title text-muted ps-3"
+                  <div className="blog-slider__content">
+                     <div className="blog-slider__code d-flex justify-content-center align-items-center my-3">
+                        <img
+                           src={imgUser}
+                           className="imgUser me-5"
+                           alt="imgUser"
+                        ></img>
+                        <span className="models nameUser">{nameUser}</span>
+                        <img
+                           src={verified}
+                           className="verified ms-3"
+                           alt="imgVerified"
+                        ></img>
+                     </div>
+                     <span className="blog-slider__title">{title}</span>
+                     <span className="blog-slider__code my-4 d-flex">
+                        {hashtags.map((hashtag, index) => (
+                           <span className="blog-slider__code pe-3">
+                              {hashtag}
+                           </span>
+                        ))}
+                     </span>
+                     <div className="blog-slider__text">{description}</div>
+                     <span className="blog-slider__code">
+                        <span className="models pe-1">Price:</span>
+                        {Array(price)
+                           .fill(price)
+                           .map((price, index) => {
+                              return (
+                                 <img
+                                    src={money}
+                                    alt="money"
+                                    className="money"
                                     key={index}
-                                 >
-                                    {language}.
-                                 </p>
-                              ))}
+                                 />
+                              )
+                           })}
+                     </span>
+                     <span className="blog-slider__code">
+                        <span className="models pe-3">Duration:</span>
+                        {duration} hs
+                     </span>
+                     <span className="blog-slider__code d-flex align-items-center">
+                        <span className="models pe-3">Languages:</span>
+                        {languages.map((language, index) => (
+                           <p className="card-title mt-2 me-3" key={index}>
+                              {language}.
+                           </p>
+                        ))}
+                     </span>
+                     <div className="blog-slider__code d-flex justify-content-center align-items-center my-3">
+                        <img src={like} className="like" alt="imgLike"></img>
+                        <span className="blog-slider__code pt-3 ps-2">
+                           {likes}
+                        </span>
+                     </div>
+                     <div className="container col-12 flex-column align-items-center">
+                        <p></p>
+                        {viewText && (
+                           <div>
+                              <div className="container col-12">
+                                 <img
+                                    className="col-12 col-md-6 mb-5"
+                                    src={UnderConstruction}
+                                    alt="UnderConstruction"
+                                 ></img>
+                              </div>
                            </div>
-                        </div>
-
-                        <div className="d-flex pt-3 align-items-center justify-content-center">
-                           <img
-                              src={like}
-                              className="like pe-1"
-                              alt="imgLike"
-                           ></img>
-                           <h5 className="card-title pt-2">{likes}</h5>
-                        </div>
+                        )}
+                        <button
+                           className="blog-slider__button"
+                           type="button"
+                           onClick={() => setViewText(!viewText)}
+                        >
+                           {viewText ? "View Less" : "View More"}
+                        </button>
                      </div>
                   </div>
-               </div>
-               <div className="container col-12 flex-column align-items-center">
-                  <p></p>
-                  {viewText && (
-                     <div>
-                        <div className="container col-12">
-                           <img
-                              className="col-12 col-md-6"
-                              src={UnderConstruction}
-                              alt="UnderConstruction"
-                           ></img>
-                        </div>
-                     </div>
-                  )}
-                  <button
-                     className="btn btn-primary"
-                     type="button"
-                     onClick={() => setViewText(!viewText)}
-                  >
-                     {viewText ? "View Less" : "View More"}
-                  </button>
                </div>
             </div>
          </div>
