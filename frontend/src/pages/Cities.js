@@ -3,12 +3,12 @@ import Footer from "../components/Footer"
 import HeroCities from "../components/HeroCities"
 import CitiesData from "../components/CitiesData"
 
-const Cities = () => {
+const Cities = (props) => {
    return (
       <>
          <Header />
          <HeroCities />
-         <CitiesData />
+         <CitiesData {...props} />
          <Footer />
       </>
    )

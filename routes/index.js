@@ -20,6 +20,10 @@ router
    .post(itinerariesControllers.postItinerary)
 
 router
+   .route("/itineraries/:id")
+   .get(itinerariesControllers.getItinerariesByCity)
+
+router
    .route("/itinerary/:id")
    .get(itinerariesControllers.getItinerary)
    .delete(itinerariesControllers.deleteItinerary)

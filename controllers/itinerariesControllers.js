@@ -3,8 +3,18 @@ const Itinerary = require("../models/Itinerary")
 const itinerariesControllers = {
    getItineraries: (req, res) => {
       Itinerary.find()
+         .populate("cityId")
          .then((itineraries) =>
             res.json({ success: true, response: itineraries })
+         )
+         .catch((err) => res.json({ success: false, response: err }))
+   },
+
+   getItinerariesByCity: (req, res) => {
+      Itinerary.find({ cityId: req.params.id })
+         .populate("cityId")
+         .then((itinerariesByCity) =>
+            res.json({ success: true, response: itinerariesByCity })
          )
          .catch((err) => res.json({ success: false, response: err }))
    },
@@ -25,7 +35,7 @@ const itinerariesControllers = {
 
    deleteItinerary: (req, res) => {
       Itinerary.findOneAndDelete({ _id: req.params.id })
-         .then(() => res.json({ success: true, response: "deleteItinerary" }))
+         .then(() => res.json({ success: true, response: "deletedItinerary" }))
          .catch((err) => res.json({ success: false, response: err }))
    },
 

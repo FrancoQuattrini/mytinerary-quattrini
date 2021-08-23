@@ -3,6 +3,10 @@ import localCurrency from "../assets/localCurrency.png"
 import population from "../assets/population.png"
 
 const HeroItineraries = (props) => {
+   if (!props.getCity) {
+      props.history.push("/cities")
+      return false
+   }
    const {
       name,
       country,
@@ -11,7 +15,7 @@ const HeroItineraries = (props) => {
       flag,
       local_currency,
       estimated_population,
-   } = props.city
+   } = props.getCity
    return (
       <>
          <div

@@ -6,10 +6,14 @@ const citiesActions = {
          try {
             let res = await axios.get("http://localhost:4000/api/cities")
             let cities = res.data.response
-            dispatch({ type: "GET_CITIES", payload: cities })
-            return { succes: true }
+            if (cities) {
+               dispatch({ type: "GET_CITIES", payload: cities })
+               return { success: true }
+            } else {
+               throw new Error("Database Error")
+            }
          } catch (err) {
-            return { succes: false, error: err }
+            return { success: false, error: err }
          }
       }
    },
@@ -17,12 +21,6 @@ const citiesActions = {
    filterCities: (value) => {
       return (dispatch) => {
          dispatch({ type: "FILTER_CITIES", payload: value })
-      }
-   },
-
-   getCity: (id) => {
-      return (dispatch) => {
-         dispatch({ type: "GET_CITY", payload: id })
       }
    },
 }

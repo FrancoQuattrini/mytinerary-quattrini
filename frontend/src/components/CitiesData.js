@@ -3,23 +3,54 @@ import CardCity from "./CardCity"
 import imgSearch from "../assets/lupaMundo.png"
 import notFoundimg from "../assets/notFound.png"
 import { Link } from "react-router-dom"
-// import Logo from "../assets/astroLoad.gif"
+import Logo from "../assets/astroLoad.gif"
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
 
 const CitiesData = (props) => {
    const [loading, setLoading] = useState(true)
-
    useEffect(() => {
-      async function getCities() {
-         let response = await props.getCities()
-         if (response.error) {
-            alert(response.error)
-         }
-      }
-      getCities()
+      props
+         .getCities()
+         .then((res) => {
+            if (res.success) {
+               setLoading(false)
+            } else {
+               props.history.push("/error")
+            }
+         })
+         .catch((err) => {
+            console.log(err)
+            props.history.push("/error")
+         })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
+
+   // useEffect(() => {
+   //    // async function getCities() {
+   //       // try {
+   //          props.getCities()
+   //                   .then((res) => {
+   //          if (res.data.success) {
+   //             setLoading(false)
+   //          } else {
+   //             props.history.push("/error")
+   //          }
+   //       })
+   //       .catch((err) => {
+   //          console.log(err)
+   //          props.history.push("/error")
+   //       })
+   //       // } catch (error) {
+   //       //    alert(error)
+   //       //    props.history.push("/error")
+   //       // } finally {
+   //       //    setLoading(false)
+   //       // }
+   //    }
+   //    // getCities()
+   // }, [])
    // const [cities, setCities] = useState([])
    // const [loading, setLoading] = useState(true)
    // const [citiesSearch, setCitiesSearch] = useState([])
@@ -43,15 +74,15 @@ const CitiesData = (props) => {
    //    // eslint-disable-next-line react-hooks/exhaustive-deps
    // }, [])
 
-   // if (loading) {
-   //    return (
-   //       <div className="container load d-flex flex-column justify-content-center align-items-center p-5">
-   //          <h2 className="loading text-center col-11 p-3">Loading</h2>
-   //          <img className="col-12 col-md-6" src={Logo} alt="Loader"></img>
-   //          <h2 className="loading text-center col-11 p-3">Please wait</h2>
-   //       </div>
-   //    )
-   // }
+   if (loading) {
+      return (
+         <div className="container load d-flex flex-column justify-content-center align-items-center m-5">
+            <h2 className="loading text-center col-11 pt-5">Loading</h2>
+            <img className="col-12 col-md-5" src={Logo} alt="Loader"></img>
+            <h2 className="loading text-center col-11">Please wait</h2>
+         </div>
+      )
+   }
 
    const searchHandler = (e) => {
       props.filterCities(e.target.value)

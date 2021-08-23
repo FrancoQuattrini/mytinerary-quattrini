@@ -11,6 +11,7 @@ const itinerarySchema = new mongoose.Schema({
    img: { type: String, required: true },
    hashtags: [{ type: String, required: true }],
    languages: [{ type: String, required: true }],
+   cityId: { type: mongoose.Types.ObjectId, ref: "city" },
 })
 
 const Itinerary = mongoose.model("itinerary", itinerarySchema)

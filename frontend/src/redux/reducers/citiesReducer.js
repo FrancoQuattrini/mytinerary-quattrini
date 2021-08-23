@@ -19,12 +19,6 @@ const citiesReducer = (
             ),
          }
 
-      case "GET_CITY":
-         return {
-            ...state,
-            city: state.cities.find((city) => city._id === action.payload),
-         }
-
       default:
          return state
    }
