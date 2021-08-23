@@ -45,7 +45,7 @@ const Itinerary = (props) => {
                      <span className="blog-slider__title">{title}</span>
                      <span className="blog-slider__code my-4">
                         {hashtags.map((hashtag, index) => (
-                           <span className="blog-slider__code pe-3">
+                           <span className="blog-slider__code pe-3" key={index}>
                               {hashtag}
                            </span>
                         ))}
@@ -80,28 +80,28 @@ const Itinerary = (props) => {
                      </span>
                      <img src={like} className="like mt-3" alt="imgLike"></img>
                      <span className="blog-slider__code">{likes}</span>
-                     <div className="container col-12 flex-column align-items-center">
-                        <p></p>
-                        {viewText && (
-                           <div>
-                              <div className="container col-12">
-                                 <img
-                                    className="col-12 col-md-6 mb-5"
-                                    src={UnderConstruction}
-                                    alt="UnderConstruction"
-                                 ></img>
-                              </div>
-                           </div>
-                        )}
-                        <button
-                           className="blog-slider__button"
-                           type="button"
-                           onClick={() => setViewText(!viewText)}
-                        >
-                           {viewText ? "View Less" : "View More"}
-                        </button>
-                     </div>
                   </div>
+               </div>
+               <div className="container col-12 flex-column align-items-center">
+                  <p></p>
+                  {viewText && (
+                     <div>
+                        <div className="container col-12">
+                           <img
+                              className="col-12 col-md-6 mb-5"
+                              src={UnderConstruction}
+                              alt="UnderConstruction"
+                           ></img>
+                        </div>
+                     </div>
+                  )}
+                  <button
+                     className="blog-slider__button"
+                     type="button"
+                     onClick={() => setViewText(!viewText)}
+                  >
+                     {viewText ? "View Less" : "View More"}
+                  </button>
                </div>
             </div>
          </div>
@@ -129,7 +129,7 @@ const Itinerary = (props) => {
                      <span className="blog-slider__title">{title}</span>
                      <span className="blog-slider__code my-4 d-flex">
                         {hashtags.map((hashtag, index) => (
-                           <span className="blog-slider__code pe-3">
+                           <span className="blog-slider__code pe-3" key={index}>
                               {hashtag}
                            </span>
                         ))}
@@ -168,28 +168,28 @@ const Itinerary = (props) => {
                            {likes}
                         </span>
                      </div>
-                     <div className="container col-12 flex-column align-items-center">
-                        <p></p>
-                        {viewText && (
-                           <div>
-                              <div className="container col-12">
-                                 <img
-                                    className="col-12 col-md-6 mb-5"
-                                    src={UnderConstruction}
-                                    alt="UnderConstruction"
-                                 ></img>
-                              </div>
-                           </div>
-                        )}
-                        <button
-                           className="blog-slider__button"
-                           type="button"
-                           onClick={() => setViewText(!viewText)}
-                        >
-                           {viewText ? "View Less" : "View More"}
-                        </button>
-                     </div>
                   </div>
+               </div>
+               <div className="container col-12 flex-column align-items-center">
+                  <p></p>
+                  {viewText && (
+                     <div>
+                        <div className="container col-12">
+                           <img
+                              className="col-12 col-md-6 mb-5"
+                              src={UnderConstruction}
+                              alt="UnderConstruction"
+                           ></img>
+                        </div>
+                     </div>
+                  )}
+                  <button
+                     className="blog-slider__button"
+                     type="button"
+                     onClick={() => setViewText(!viewText)}
+                  >
+                     {viewText ? "View Less" : "View More"}
+                  </button>
                </div>
             </div>
          </div>
