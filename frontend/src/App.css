@@ -412,7 +412,7 @@ h2.error,
 .search,
 ::placeholder {
    border: none;
-   background-color: #8019a8;
+   background-color: #bbb8bb;
    padding: 12px;
    text-align: center;
    color: white;
@@ -672,4 +672,16 @@ h2.error,
 
 .empty {
    font-weight: 600;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+   .liki {
+      padding-left: 12px;
+   }
+}
+
+.backSignUp {
+   height: 100vh;
+   background-size: cover;
+   background-position: center;
 }

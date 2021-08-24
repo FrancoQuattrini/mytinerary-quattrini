@@ -79,7 +79,7 @@ const Itinerary = (props) => {
                         ))}
                      </span>
                      <img src={like} className="like mt-3" alt="imgLike"></img>
-                     <span className="blog-slider__code">{likes}</span>
+                     <span className="blog-slider__code liki">{likes}</span>
                   </div>
                </div>
                <div className="container col-12 flex-column align-items-center">

@@ -1,7 +1,4 @@
-const citiesReducer = (
-   state = { cities: [], citiesSearch: [], city: [] },
-   action
-) => {
+const citiesReducer = (state = { cities: [], citiesSearch: [] }, action) => {
    switch (action.type) {
       case "GET_CITIES":
          return {
