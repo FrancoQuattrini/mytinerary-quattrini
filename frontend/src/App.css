@@ -412,6 +412,7 @@ h2.error,
 .search,
 ::placeholder {
    border: none;
+   outline: none;
    background-color: #bbb8bb;
    padding: 12px;
    text-align: center;
@@ -684,4 +685,19 @@ h2.error,
    height: 100vh;
    background-size: cover;
    background-position: center;
+}
+
+.form-contain {
+   background-color: rgba(165, 18, 158, 0.575);
+}
+
+input.form-control {
+   background-color: transparent;
+   border: none;
+   border-radius: 10px;
+   outline: none;
+}
+
+input.form-control {
+   color: white;
 }
