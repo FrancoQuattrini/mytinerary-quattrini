@@ -168,11 +168,6 @@ h1#titleCity {
    text-shadow: 1px 1px 2px black;
 }
 
-img.logoUser {
-   height: 3rem;
-   padding-left: 3rem;
-}
-
 #textLogo {
    text-shadow: 1px 1px 2px black;
 }
@@ -700,4 +695,24 @@ input.form-control {
 
 input.form-control {
    color: white;
+}
+
+span.nav-link {
+   cursor: pointer;
+}
+
+.logoUser {
+   background-position: center !important;
+   width: 3em;
+   height: 3em;
+   background-size: cover !important;
+   border-radius: 100% !important;
+}
+
+.hiName {
+   color: rgb(2, 183, 255);
+   margin-left: 2rem;
+   padding: 5px 10px;
+   background-color: rgb(255, 255, 255);
+   border-radius: 10px;
 }

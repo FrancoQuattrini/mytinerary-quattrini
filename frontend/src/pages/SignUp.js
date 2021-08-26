@@ -5,8 +5,10 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Swal from "sweetalert2"
+import { connect } from "react-redux"
+import usersActions from "../redux/actions/usersActions"
 
-const SignUp = () => {
+const SignUp = (props) => {
    const [countries, setCountries] = useState([])
    const [newUser, setNewUser] = useState({
       firstname: "",
@@ -20,6 +22,7 @@ const SignUp = () => {
       axios
          .get("https://restcountries.eu/rest/v2/all?fields=name")
          .then((res) => setCountries(res.data))
+      return false
    }, [])
 
    const inputHandler = (e) => {
@@ -34,27 +37,35 @@ const SignUp = () => {
             text: "All the fields are required",
             icon: "warning",
             showConfirmButton: false,
-            timer: 2700,
+            timer: 2500,
             timerProgressBar: true,
          })
       } else {
-         axios
-            .post("http://localhost:4000/api/user/signup", newUser)
+         props
+            .postUser(newUser)
             .then((res) => {
-               if (res.data.success) {
+               if (res.success) {
                   Swal.fire({
                      icon: "success",
                      title: "Account created successfully",
                      showConfirmButton: false,
-                     timer: 2700,
+                     timer: 2500,
                      timerProgressBar: true,
+                  })
+                  setNewUser({
+                     firstname: "",
+                     lastname: "",
+                     email: "",
+                     password: "",
+                     picture: "",
+                     country: "",
                   })
                } else {
                   Swal.fire({
                      icon: "error",
                      text: "There is already an account with this email",
                      showConfirmButton: false,
-                     timer: 2700,
+                     timer: 2500,
                      timerProgressBar: true,
                   })
                }
@@ -83,6 +94,7 @@ const SignUp = () => {
                         value={newUser.firstname}
                         placeholder="FirstName"
                         onChange={inputHandler}
+                        autoComplete="none"
                      ></input>
                   </div>
                   <div className="col-md-7">
@@ -93,6 +105,7 @@ const SignUp = () => {
                         value={newUser.lastname}
                         placeholder="LastName"
                         onChange={inputHandler}
+                        autoComplete="none"
                      ></input>
                   </div>
                   <div className="col-md-7">
@@ -103,6 +116,7 @@ const SignUp = () => {
                         value={newUser.email}
                         placeholder="Email"
                         onChange={inputHandler}
+                        autoComplete="none"
                      ></input>
                   </div>
                   <div className="col-md-7">
@@ -113,6 +127,7 @@ const SignUp = () => {
                         value={newUser.password}
                         placeholder="Password"
                         onChange={inputHandler}
+                        autoComplete="none"
                      ></input>
                      <div className="form-text text-white ps-2">
                         You need a minimum of 6 characters.
@@ -126,6 +141,7 @@ const SignUp = () => {
                         value={newUser.picture}
                         placeholder="URL picture profile"
                         onChange={inputHandler}
+                        autoComplete="none"
                      ></input>
                   </div>
                   <div className="col-md-7">
@@ -148,14 +164,14 @@ const SignUp = () => {
                <div className="col-12 text-center">
                   <button
                      type="submit"
-                     className="btn btn-primary"
+                     className="btn btn-success btn-lg px-2 mt-1"
                      onClick={submitForm}
                   >
                      Sign Up
                   </button>
                </div>
                <div className="col-12 text-center">
-                  <h4 className="text-white">Already have an account?</h4>
+                  <h4 className="text-white pt-3">Already have an account?</h4>
                   <Link to="/login" className="text-white">
                      Log In here!
                   </Link>
@@ -167,4 +183,8 @@ const SignUp = () => {
    )
 }
 
-export default SignUp
+const mapDispatchToProps = {
+   postUser: usersActions.postUser,
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)

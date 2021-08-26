@@ -3,10 +3,11 @@ import Footer from "../components/Footer"
 import Back from "../assets/travel.jpg"
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import axios from "axios"
+import { connect } from "react-redux"
+import usersActions from "../redux/actions/usersActions"
 import Swal from "sweetalert2"
 
-const LogIn = () => {
+const LogIn = (props) => {
    const [login, setLogin] = useState({
       email: "",
       password: "",
@@ -24,19 +25,19 @@ const LogIn = () => {
             text: "All the fields are required",
             icon: "warning",
             showConfirmButton: false,
-            timer: 2700,
+            timer: 2500,
             timerProgressBar: true,
          })
       } else {
-         axios
-            .post("http://localhost:4000/api/user/login", login)
+         props
+            .logIn(login)
             .then((res) => {
-               if (res.data.success) {
+               if (res.success) {
                   Swal.fire({
                      icon: "success",
                      title: "Welcome to MYtineraries",
                      showConfirmButton: false,
-                     timer: 2700,
+                     timer: 2500,
                      timerProgressBar: true,
                   })
                } else {
@@ -44,7 +45,7 @@ const LogIn = () => {
                      icon: "error",
                      text: "Username and/or password incorrect",
                      showConfirmButton: false,
-                     timer: 2700,
+                     timer: 2500,
                      timerProgressBar: true,
                   })
                }
@@ -89,14 +90,14 @@ const LogIn = () => {
                <div className="col-12 text-center">
                   <button
                      type="submit"
-                     className="btn btn-primary"
+                     className="btn btn-success btn-lg px-2 mt-1"
                      onClick={submitForm}
                   >
                      Log In
                   </button>
                </div>
                <div className="col-12 text-center">
-                  <h4 className="text-white">Don't have an account?</h4>
+                  <h4 className="text-white pt-3">Don't have an account?</h4>
                   <Link to="/signup" className="text-white">
                      Sign Up here!
                   </Link>
@@ -108,4 +109,8 @@ const LogIn = () => {
    )
 }
 
-export default LogIn
+const mapDispatchToProps = {
+   logIn: usersActions.logIn,
+}
+
+export default connect(null, mapDispatchToProps)(LogIn)

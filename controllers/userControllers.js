@@ -1,12 +1,13 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 const userControllers = {
    postUser: (req, res) => {
       const { firstname, lastname, email, password, picture, country } =
          req.body
       let hashedPass = bcryptjs.hashSync(password, 10)
-      const userPosted = new User({
+      const newUser = new User({
          firstname,
          lastname,
          email,
@@ -17,9 +18,19 @@ const userControllers = {
       User.findOne({ email: email })
          .then((user) => {
             if (!user) {
-               userPosted
+               newUser
                   .save()
-                  .then((user) => res.json({ success: true, response: user }))
+                  .then((user) => {
+                     const token = jwt.sign({ ...user }, process.env.SECRETKEY)
+                     res.json({
+                        success: true,
+                        response: {
+                           firstname: user.firstname,
+                           picture: user.picture,
+                           token,
+                        },
+                     })
+                  })
                   .catch((err) => res.json({ success: false, response: err }))
             } else {
                res.json({ success: false, response: "Email already in use" })
@@ -32,8 +43,16 @@ const userControllers = {
       const { email, password } = req.body
       User.findOne({ email: email })
          .then((user) => {
+            const token = jwt.sign({ ...user }, process.env.SECRETKEY)
             if (user && bcryptjs.compareSync(password, user.password)) {
-               res.json({ success: true, response: user })
+               res.json({
+                  success: true,
+                  response: {
+                     firstname: user.firstname,
+                     picture: user.picture,
+                     token,
+                  },
+               })
             } else {
                res.json({
                   success: false,
