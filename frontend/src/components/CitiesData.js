@@ -7,17 +7,28 @@ import Logo from "../assets/astroLoad.gif"
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
+import Swal from "sweetalert2"
 
 const CitiesData = (props) => {
    const [loading, setLoading] = useState(true)
    useEffect(() => {
       props
-         .getCities()
+         .getCities(props.token)
          .then((res) => {
             if (res.success) {
                setLoading(false)
             } else {
-               props.history.push("/error")
+               // props.history.push("/error")
+               Swal.fire({
+                  icon: "error",
+                  text: "Login to see the cities, fucking idiot!",
+                  position: "top",
+                  toast: "false",
+                  width: "27rem",
+                  showConfirmButton: false,
+                  timer: 2500,
+                  timerProgressBar: true,
+               })
             }
          })
          .catch((err) => {
@@ -29,8 +40,8 @@ const CitiesData = (props) => {
 
    if (loading) {
       return (
-         <div className="container load d-flex flex-column justify-content-center align-items-center m-5">
-            <h2 className="loading text-center col-11 pt-5">Loading</h2>
+         <div className="container load d-flex flex-column justify-content-center align-items-center my-5">
+            <h2 className="loading text-center col-11 mt-4 pt-5">Loading</h2>
             <img className="col-12 col-md-5" src={Logo} alt="Loader"></img>
             <h2 className="loading text-center col-11">Please wait</h2>
          </div>
@@ -99,6 +110,7 @@ const CitiesData = (props) => {
 const mapStateToProps = (state) => {
    return {
       citiesSearch: state.cities.citiesSearch,
+      token: state.users.token,
    }
 }
 

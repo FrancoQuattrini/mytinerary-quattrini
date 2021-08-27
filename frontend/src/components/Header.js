@@ -1,42 +1,8 @@
 import { connect } from "react-redux"
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import iconUser from "../assets/iconuser1.png"
 import usersActions from "../redux/actions/usersActions"
-
-window.addEventListener("DOMContentLoaded", (event) => {
-   // Navbar shrink function
-   var navbarShrink = function () {
-      const navbarCollapsible = document.body.querySelector("#mainNav")
-      if (!navbarCollapsible) {
-         return
-      }
-      if (window.scrollY === 0) {
-         navbarCollapsible.classList.remove("navbar-shrink")
-      } else {
-         navbarCollapsible.classList.add("navbar-shrink")
-      }
-   }
-
-   // Shrink the navbar
-   navbarShrink()
-
-   // Shrink the navbar when page is scrolled
-   document.addEventListener("scroll", navbarShrink)
-
-   // Collapse responsive navbar when toggler is visible
-   const navbarToggler = document.body.querySelector(".navbar-toggler")
-   const responsiveNavItems = [].slice.call(
-      document.querySelectorAll("#navbarResponsive .nav-link")
-   )
-   responsiveNavItems.map(function (responsiveNavItem) {
-      return responsiveNavItem.addEventListener("click", () => {
-         if (window.getComputedStyle(navbarToggler).display !== "none") {
-            navbarToggler.click()
-         }
-      })
-   })
-})
 
 const Header = (props) => {
    return (
@@ -109,12 +75,14 @@ const Header = (props) => {
                   )}
                   {props.token && (
                      <li className="nav-item">
-                        <span
-                           className="nav-link me-4"
-                           onClick={() => props.logOut()}
-                        >
-                           Log Out
-                        </span>
+                        <Link to="/" style={{ textDecoration: "none" }}>
+                           <span
+                              className="nav-link me-4"
+                              onClick={() => props.logOut()}
+                           >
+                              Log Out
+                           </span>
+                        </Link>
                      </li>
                   )}
                </ul>
@@ -133,6 +101,37 @@ const Header = (props) => {
       </nav>
    )
 }
+
+window.addEventListener("DOMContentLoaded", (event) => {
+   // Navbar shrink function
+   var navbarShrink = function () {
+      const navbarCollapsible = document.body.querySelector("#mainNav")
+      if (!navbarCollapsible) {
+         return
+      }
+      if (window.scrollY === 0) {
+         navbarCollapsible.classList.remove("navbar-shrink")
+      } else {
+         navbarCollapsible.classList.add("navbar-shrink")
+      }
+   }
+   // Shrink the navbar
+   navbarShrink()
+   // Shrink the navbar when page is scrolled
+   document.addEventListener("scroll", navbarShrink)
+   // Collapse responsive navbar when toggler is visible
+   const navbarToggler = document.body.querySelector(".navbar-toggler")
+   const responsiveNavItems = [].slice.call(
+      document.querySelectorAll("#navbarResponsive .nav-link")
+   )
+   responsiveNavItems.map(function (responsiveNavItem) {
+      return responsiveNavItem.addEventListener("click", () => {
+         if (window.getComputedStyle(navbarToggler).display !== "none") {
+            navbarToggler.click()
+         }
+      })
+   })
+})
 
 const mapStateToProps = (state) => {
    return {
