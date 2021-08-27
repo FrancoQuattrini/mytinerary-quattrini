@@ -52,13 +52,25 @@ const SignUp = (props) => {
                      timer: 2500,
                      timerProgressBar: true,
                   })
-                  setNewUser({
-                     firstname: "",
-                     lastname: "",
-                     email: "",
-                     password: "",
-                     picture: "",
-                     country: "",
+                  // setNewUser({
+                  //    firstname: "",
+                  //    lastname: "",
+                  //    email: "",
+                  //    password: "",
+                  //    picture: "",
+                  //    country: "",
+                  // })
+               } else if (res.errors) {
+                  res.errors.map((error) => {
+                     return Swal.fire({
+                        text: error.message,
+                        position: "top-end",
+                        toast: true,
+                        // background: "#dd0808",
+                        showConfirmButton: false,
+                        timer: 2500,
+                        timerProgressBar: true,
+                     })
                   })
                } else {
                   Swal.fire({

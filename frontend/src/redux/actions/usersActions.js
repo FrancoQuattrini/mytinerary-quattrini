@@ -12,7 +12,8 @@ const usersActions = {
                dispatch({ type: "ACTION_USER", payload: res.data.response })
                return { success: true }
             } else {
-               throw new Error("Database Error")
+               return { success: false, errors: res.data.errors }
+               // throw new Error("Database Error")
             }
          } catch (err) {
             return { success: false, error: err }
