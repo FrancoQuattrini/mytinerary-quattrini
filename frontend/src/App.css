@@ -684,6 +684,31 @@ h2.error,
 
 .form-contain {
    background-color: rgba(165, 18, 158, 0.575);
+   padding-top: 1.5rem;
+   height: 85vh;
+}
+
+.form-contain2 {
+   padding-top: 1.5rem;
+   height: 55vh;
+   background-color: rgba(165, 18, 158, 0.575);
+}
+
+.boy {
+   /* height: 65vh; */
+   width: 100%;
+   padding-left: 3rem;
+}
+
+.boy2 {
+   width: 100%;
+   padding-right: 3rem;
+}
+
+@media (max-width: 767.98px) {
+   .boy {
+      display: none;
+   }
 }
 
 input.form-control {

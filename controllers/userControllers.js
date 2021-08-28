@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 
 const userControllers = {
    postUser: (req, res) => {
-      const { firstname, lastname, email, password, picture, country } =
+      const { firstname, lastname, email, password, picture, country, google } =
          req.body
       let hashedPass = bcryptjs.hashSync(password, 10)
       const newUser = new User({
@@ -14,6 +14,7 @@ const userControllers = {
          password: hashedPass,
          picture,
          country,
+         google,
       })
       User.findOne({ email: email })
          .then((user) => {
@@ -69,22 +70,9 @@ const userControllers = {
          .catch((err) => res.json({ success: false, response: err }))
    },
 
-   getUser: (req, res) => {
-      User.findOne({ _id: req.params.id })
-         .then((user) => res.json({ success: true, response: user }))
-         .catch((err) => res.json({ success: false, response: err }))
-   },
-
-   deleteUser: (req, res) => {
-      User.findOneAndDelete({ _id: req.params.id })
-         .then(() => res.json({ success: true, response: deleteUser }))
-         .catch((err) => res.json({ success: false, response: err }))
-   },
-
-   modifyUser: (req, res) => {
-      User.findOneAndUpdate({ _id: req.params.id }, { ...req.body })
-         .then(() => res.json({ success: true, response: modifyUser }))
-         .catch((err) => res.json({ success: false, response: err }))
+   verifyToken: (req, res) => {
+      console.log(req.user)
+      res.json({ firstname: req.user.firstname, picture: req.user.picture })
    },
 }
 

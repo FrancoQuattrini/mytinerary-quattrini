@@ -14,11 +14,7 @@ import usersActions from "./redux/actions/usersActions"
 const App = (props) => {
    useEffect(() => {
       if (localStorage.getItem("token")) {
-         props.logInLS(
-            localStorage.getItem("token"),
-            localStorage.getItem("firstname"),
-            localStorage.getItem("picture")
-         )
+         props.logInLS(localStorage.getItem("token"))
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])

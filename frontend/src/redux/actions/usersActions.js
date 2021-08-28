@@ -46,12 +46,26 @@ const usersActions = {
       }
    },
 
-   logInLS: (token, firstname, picture) => {
-      return (dispatch, getState) => {
-         dispatch({
-            type: "ACTION_USER",
-            payload: { token, firstname, picture },
-         })
+   logInLS: (token) => {
+      return async (dispatch, getState) => {
+         try {
+            let res = await axios.get("http://localhost:4000/api/verifytoken", {
+               headers: {
+                  Authorization: "Bearer " + token,
+               },
+            })
+            console.log(res)
+            dispatch({
+               type: "ACTION_USER",
+               payload: {
+                  token,
+                  firstname: res.data.firstname,
+                  picture: res.data.picture,
+               },
+            })
+         } catch (err) {
+            return dispatch({ type: "LOG_OUT" })
+         }
       }
    },
 }

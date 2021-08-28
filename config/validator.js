@@ -58,6 +58,7 @@ const validator = (req, res, next) => {
       country: joi.string().required().messages({
          "string.empty": "You must select a country",
       }),
+      google: joi.boolean(),
    })
 
    const validation = schema.validate(req.body, { abortEarly: false })

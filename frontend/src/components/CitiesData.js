@@ -7,28 +7,17 @@ import Logo from "../assets/astroLoad.gif"
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
-import Swal from "sweetalert2"
 
 const CitiesData = (props) => {
    const [loading, setLoading] = useState(true)
    useEffect(() => {
       props
-         .getCities(props.token)
+         .getCities()
          .then((res) => {
             if (res.success) {
                setLoading(false)
             } else {
-               // props.history.push("/error")
-               Swal.fire({
-                  icon: "error",
-                  text: "Login to see the cities, fucking idiot!",
-                  position: "top",
-                  toast: "false",
-                  width: "27rem",
-                  showConfirmButton: false,
-                  timer: 2500,
-                  timerProgressBar: true,
-               })
+               props.history.push("/error")
             }
          })
          .catch((err) => {

@@ -8,10 +8,7 @@ const validator = require("../config/validator")
 
 router
    .route("/cities")
-   .get(
-      passport.authenticate("jwt", { session: false }),
-      citiesControllers.getCities
-   )
+   .get(citiesControllers.getCities)
    .post(citiesControllers.postCity)
 
 router
@@ -38,12 +35,13 @@ router
 router.route("/user/signup").post(validator, userControllers.postUser)
 router.route("/user/login").post(userControllers.logUser)
 
-router
-   .route("/user/:id")
-   .get(userControllers.getUser)
-   .delete(userControllers.deleteUser)
-   .put(userControllers.modifyUser)
-
 router.route("/users").get(userControllers.getUsers)
+
+router
+   .route("/verifytoken")
+   .get(
+      passport.authenticate("jwt", { session: false }),
+      userControllers.verifyToken
+   )
 
 module.exports = router
