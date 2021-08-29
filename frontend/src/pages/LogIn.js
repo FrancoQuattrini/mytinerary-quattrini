@@ -1,13 +1,15 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import Back from "../assets/travel.jpg"
+import Back from "../assets/login.jpg"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { connect } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 import Swal from "sweetalert2"
 import GoogleLogin from "react-google-login"
-import img from "../assets/boyA.png"
+import { HiMail } from "react-icons/hi"
+import { ImKey } from "react-icons/im"
+import { BsEye, BsEyeSlash } from "react-icons/bs"
 
 const LogIn = (props) => {
    const [login, setLogin] = useState({
@@ -71,6 +73,8 @@ const LogIn = (props) => {
       logIn(userLoginGoogle)
    }
 
+   const [eye, setEye] = useState(true)
+
    return (
       <>
          <Header />
@@ -79,42 +83,57 @@ const LogIn = (props) => {
             style={{ backgroundImage: `url(${Back})` }}
          >
             <div className="container p-3">
-               <div className="col-md-6 mt-5 d-flex justify-content-end align-items-center">
-                  <img src={img} className="boy2" alt="boyB"></img>
+               <div className="col-md-6 mt-2 d-flex me-5 justify-content-end align-items-center">
+                  <span></span>
                </div>
                <div className="col-12 col-md-6 form-contain2 align-self-center mt-5 me-5">
-                  <h1 className="text-center text-white">Log In!</h1>
+                  <h1 className="text-center text-white sign">Welcome back!</h1>
                   <form className="row g-3 d-flex justify-content-center p-3">
                      <div className="col-md-12">
-                        <input
-                           type="email"
-                           className="form-control"
-                           name="email"
-                           value={login.email}
-                           placeholder="Email"
-                           onChange={inputHandler}
-                        ></input>
+                        <div className="back-input">
+                           <HiMail className="iconsSign" />
+                           <input
+                              type="email"
+                              className="form-control"
+                              name="email"
+                              value={login.email}
+                              placeholder="Email"
+                              onChange={inputHandler}
+                           ></input>
+                        </div>
                      </div>
                      <div className="col-md-12">
-                        <input
-                           type="password"
-                           className="form-control"
-                           name="password"
-                           value={login.password}
-                           placeholder="Password"
-                           onChange={inputHandler}
-                        ></input>
+                        <div className="back-input">
+                           <ImKey className="iconsSign" />
+                           <input
+                              type={eye ? "password" : "text"}
+                              className="form-control"
+                              name="password"
+                              value={login.password}
+                              placeholder="Password"
+                              onChange={inputHandler}
+                              autoComplete="none"
+                           ></input>
+                           <div onClick={() => setEye(!eye)} className="pe-4">
+                              {eye ? (
+                                 <BsEyeSlash className="iconsSign" />
+                              ) : (
+                                 <BsEye className="iconsSign" />
+                              )}
+                           </div>
+                        </div>
                      </div>
                   </form>
                   <div className="text-center">
                      <button
                         type="submit"
-                        className="btn btn-success btn-lg px-2 mb-4"
+                        className="btn submitBoton"
                         onClick={submitForm}
                      >
-                        Sign Up
+                        Log In
                      </button>
                   </div>
+                  <h5 className="text-white text-center">Or</h5>
                   <div className="text-center">
                      <GoogleLogin
                         clientId="332293588539-2c447r49jfh9gupfj17mfm5nb3npcbj7.apps.googleusercontent.com"

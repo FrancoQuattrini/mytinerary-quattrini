@@ -7,6 +7,7 @@ import Logo from "../assets/astroLoad.gif"
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
+import { ImSearch } from "react-icons/im"
 
 const CitiesData = (props) => {
    const [loading, setLoading] = useState(true)
@@ -53,12 +54,16 @@ const CitiesData = (props) => {
                         src={imgSearch}
                         alt="imgSearch"
                      ></img>
-                     <input
-                        className="search col-12 col-md-6"
-                        type="search"
-                        placeholder="Search here ..."
-                        onChange={searchHandler}
-                     ></input>
+                     <div className="search col-12 col-md-6 d-flex align-items-center">
+                        <ImSearch className="iconsSign" />
+                        <input
+                           className="search2"
+                           type="search"
+                           placeholder="Search here ..."
+                           onChange={searchHandler}
+                        ></input>
+                     </div>
+
                      <hr id="dividerCities" className="divider" />
                   </div>
                </div>
