@@ -13,7 +13,6 @@ const usersActions = {
                return { success: true }
             } else {
                return { success: false, errors: res.data.errors }
-               // throw new Error("Database Error")
             }
          } catch (err) {
             return { success: false, error: err }
@@ -54,7 +53,6 @@ const usersActions = {
                   Authorization: "Bearer " + token,
                },
             })
-            console.log(res)
             dispatch({
                type: "ACTION_USER",
                payload: {

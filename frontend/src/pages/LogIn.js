@@ -158,65 +158,6 @@ const LogIn = (props) => {
          </section>
          <Footer />
       </>
-
-      // <>
-      //    <Header />
-      //    <section
-      //       className="bg-image backSignUp d-flex justify-content-center align-items-center"
-      //       style={{ backgroundImage: `url(${Back})` }}
-      //    >
-      //       <div className="container form-contain d-flex flex-column p-3">
-      //          <h1 className="text-center text-white">Log In!</h1>
-      //          <form className="row g-3 d-flex justify-content-center p-3">
-      //             <div className="col-md-7 form-contain">
-      //                <input
-      //                   type="email"
-      //                   className="form-control"
-      //                   name="email"
-      //                   value={login.email}
-      //                   placeholder="Email"
-      //                   onChange={inputHandler}
-      //                ></input>
-      //             </div>
-      //             <div className="col-md-7">
-      //                <input
-      //                   type="password"
-      //                   className="form-control"
-      //                   name="password"
-      //                   value={login.password}
-      //                   placeholder="Password"
-      //                   onChange={inputHandler}
-      //                ></input>
-      //             </div>
-      //          </form>
-      //          <div className="col-12 text-center">
-      //             <button
-      //                type="submit"
-      //                className="btn btn-success btn-lg px-2 mt-1"
-      //                onClick={submitForm}
-      //             >
-      //                Log In
-      //             </button>
-      //          </div>
-      //          <div className="text-center">
-      //             <GoogleLogin
-      //                clientId="332293588539-2c447r49jfh9gupfj17mfm5nb3npcbj7.apps.googleusercontent.com"
-      //                buttonText="Log In with Google"
-      //                onSuccess={responseGoogle}
-      //                onFailure={responseGoogle}
-      //                cookiePolicy={"single_host_origin"}
-      //             />
-      //          </div>
-      //          <div className="col-12 text-center">
-      //             <h4 className="text-white pt-3">Don't have an account?</h4>
-      //             <Link to="/signup" className="text-white">
-      //                Sign Up here!
-      //             </Link>
-      //          </div>
-      //       </div>
-      //    </section>
-      //    <Footer />
-      // </>
    )
 }
 
