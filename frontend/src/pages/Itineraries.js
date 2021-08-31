@@ -94,6 +94,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
    getCity: citiesActions.getCity,
    getItineraries: itinerariesActions.getItineraries,
+   getActivities: itinerariesActions.getActivities,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itineraries)

@@ -1,11 +1,13 @@
 import verified from "../assets/verified.png"
-import UnderConstruction from "../assets/UnderConstruction.jpg"
 import like from "../assets/like.png"
 import money from "../assets/money2.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { connect } from "react-redux"
+import itinerariesActions from "../redux/actions/itinerariesActions"
 
 const Itinerary = (props) => {
    const [viewText, setViewText] = useState(false)
+   const [activities, setActivities] = useState([])
    const {
       nameUser,
       imgUser,
@@ -17,7 +19,41 @@ const Itinerary = (props) => {
       img,
       hashtags,
       languages,
+      _id,
    } = props.data
+   const [likeBoton, setLikeBoton] = useState(true)
+   const [likesItineraries, setLikesItineraries] = useState(likes)
+   useEffect(() => {
+      props
+         .getActivities(_id)
+         .then((res) => {
+            if (res.success) {
+               setActivities(res.response)
+               // setLoading(false)
+               // } else {
+               // props.history.push("/error")
+               // return false
+            }
+         })
+         .catch((err) => {
+            console.log(err)
+            // props.history.push("/error")
+         })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [])
+
+   const likeItinerary = () => {
+      if (props.token) {
+         console.log("EXISTE TOKEN")
+         props.like(_id, props.token).then((res) => {
+            console.log(res)
+         })
+      } else {
+         console.log("NO ESTA TOKEN PARA LIKE")
+         setLikeBoton(false)
+      }
+   }
+
    return (
       <>
          <div className="blog-slider mb-5 d-lg-none d-xl-none d-xxl-none">
@@ -78,21 +114,33 @@ const Itinerary = (props) => {
                            </p>
                         ))}
                      </span>
-                     <img src={like} className="like mt-3" alt="imgLike"></img>
+                     <img
+                        src={like}
+                        className="like mt-3"
+                        alt="imgLike"
+                        onClick={likeItinerary}
+                     ></img>
                      <span className="blog-slider__code liki">{likes}</span>
                   </div>
                </div>
                <div className="container col-12 flex-column align-items-center">
-                  <p></p>
                   {viewText && (
-                     <div>
-                        <div className="container col-12">
-                           <img
-                              className="col-12 col-md-6 mb-5"
-                              src={UnderConstruction}
-                              alt="UnderConstruction"
-                           ></img>
-                        </div>
+                     <div className="container-fluid">
+                        {activities.map((activity, index) => {
+                           return (
+                              <div
+                                 style={{
+                                    backgroundImage: `url(${activity.img})`,
+                                 }}
+                                 key={index}
+                                 className="activityImg text-center mb-4"
+                              >
+                                 <h3 className="activityTitle">
+                                    {activity.title}
+                                 </h3>
+                              </div>
+                           )
+                        })}
                      </div>
                   )}
                   <button
@@ -163,9 +211,14 @@ const Itinerary = (props) => {
                         ))}
                      </span>
                      <div className="blog-slider__code d-flex justify-content-center align-items-center my-3">
-                        <img src={like} className="like" alt="imgLike"></img>
+                        <img
+                           onClick={likeItinerary}
+                           src={like}
+                           className="like"
+                           alt="imgLike"
+                        ></img>
                         <span className="blog-slider__code pt-3 ps-2">
-                           {likes}
+                           {likes.length}
                         </span>
                      </div>
                   </div>
@@ -173,14 +226,22 @@ const Itinerary = (props) => {
                <div className="container col-12 flex-column align-items-center">
                   <p></p>
                   {viewText && (
-                     <div>
-                        <div className="container col-12">
-                           <img
-                              className="col-12 col-md-6 mb-5"
-                              src={UnderConstruction}
-                              alt="UnderConstruction"
-                           ></img>
-                        </div>
+                     <div className="container d-flex justify-content-between">
+                        {activities.map((activity, index) => {
+                           return (
+                              <div
+                                 style={{
+                                    backgroundImage: `url(${activity.img})`,
+                                 }}
+                                 key={index}
+                                 className="text-center activityImg2"
+                              >
+                                 <h3 className="activityTitle">
+                                    {activity.title}
+                                 </h3>
+                              </div>
+                           )
+                        })}
                      </div>
                   )}
                   <button
@@ -197,4 +258,15 @@ const Itinerary = (props) => {
    )
 }
 
-export default Itinerary
+const mapStateToProps = (state) => {
+   return {
+      token: state.users.token,
+   }
+}
+
+const mapDispatchToProps = {
+   getActivities: itinerariesActions.getActivities,
+   like: itinerariesActions.like,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Itinerary)
