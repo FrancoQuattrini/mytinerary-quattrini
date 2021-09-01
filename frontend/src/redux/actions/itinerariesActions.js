@@ -67,7 +67,7 @@ const itinerariesActions = {
          try {
             let res = await axios.post(
                "http://localhost:4000/api/comments/" + id,
-               { comment },
+               {},
                {
                   headers: {
                      Authorization: "Bearer " + token,
@@ -77,6 +77,26 @@ const itinerariesActions = {
             let comment = res.data.response
             if (comment) {
                return { success: true, response: comment }
+            } else {
+               throw new Error("Database Error")
+            }
+         } catch (err) {
+            return { success: false, error: err }
+         }
+      }
+   },
+
+   modifyComment: (id, comment, idComment) => {
+      return async (dispatch, getState) => {
+         try {
+            let res = await axios.put(
+               "http://localhost:4000/api/comments/" + id,
+               { comment, idComment }
+            )
+            let modifyComment = res.data.response
+            console.log(modifyComment.comment)
+            if (modifyComment) {
+               return { success: true, response: modifyComment }
             } else {
                throw new Error("Database Error")
             }

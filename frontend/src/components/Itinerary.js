@@ -4,6 +4,8 @@ import money from "../assets/money2.png"
 import { useState } from "react"
 import { connect } from "react-redux"
 import itinerariesActions from "../redux/actions/itinerariesActions"
+import Comments from "./Comments"
+import toast, { Toaster } from "react-hot-toast"
 
 const Itinerary = (props) => {
    const [viewText, setViewText] = useState(false)
@@ -21,6 +23,8 @@ const Itinerary = (props) => {
       languages,
       _id,
    } = props.data
+
+   const [comments, setComments] = useState(props.data.comments)
 
    const getActivities = () => {
       if (!viewText && activities.length === 0) {
@@ -49,13 +53,16 @@ const Itinerary = (props) => {
             setLikesItineraries(res.response.likes)
          })
       } else {
-         alert("NO ESTA TOKEN PARA LIKE")
+         toast.error("You must be logged in to like a post")
          // setLikeBoton(false)
       }
    }
 
    return (
       <>
+         <div>
+            <Toaster position="bottom-right" reverseOrder={false} />
+         </div>
          <div className="blog-slider mb-5 d-lg-none d-xl-none d-xxl-none">
             <div className="blog-slider__wrp swiper-wrapper">
                <div className="blog-slider__item swiper-slide">
@@ -127,24 +134,34 @@ const Itinerary = (props) => {
                </div>
                <div className="container col-12 flex-column align-items-center">
                   {viewText && (
-                     <div className="container-fluid">
-                        {activities.map((activity, index) => {
-                           return (
-                              <div
-                                 style={{
-                                    backgroundImage: `url(${activity.img})`,
-                                 }}
-                                 key={index}
-                                 className="activityImg text-center mb-4"
-                              >
-                                 <h3 className="activityTitle">
-                                    {activity.title}
-                                 </h3>
-                              </div>
-                           )
-                        })}
-                     </div>
+                     <>
+                        <div className="container-fluid">
+                           {activities.map((activity, index) => {
+                              return (
+                                 <div
+                                    style={{
+                                       backgroundImage: `url(${activity.img})`,
+                                    }}
+                                    key={index}
+                                    className="activityImg text-center mb-4"
+                                 >
+                                    <h3 className="activityTitle">
+                                       {activity.title}
+                                    </h3>
+                                 </div>
+                              )
+                           })}
+                        </div>
+                        <div className="container-fluid bg-warning">
+                           <Comments
+                              itinerary={_id}
+                              comments={comments}
+                              setComments={setComments}
+                           />
+                        </div>
+                     </>
                   )}
+
                   <button
                      className="blog-slider__button"
                      type="button"
@@ -155,7 +172,6 @@ const Itinerary = (props) => {
                </div>
             </div>
          </div>
-
          <div className="blog-slider mb-5 d-none d-lg-block">
             <div className="blog-slider__wrp swiper-wrapper">
                <div className="blog-slider__item swiper-slide">
@@ -228,24 +244,34 @@ const Itinerary = (props) => {
                <div className="container col-12 flex-column align-items-center">
                   <p></p>
                   {viewText && (
-                     <div className="container d-flex justify-content-between">
-                        {activities.map((activity, index) => {
-                           return (
-                              <div
-                                 style={{
-                                    backgroundImage: `url(${activity.img})`,
-                                 }}
-                                 key={index}
-                                 className="text-center activityImg2"
-                              >
-                                 <h3 className="activityTitle">
-                                    {activity.title}
-                                 </h3>
-                              </div>
-                           )
-                        })}
-                     </div>
+                     <>
+                        <div className="container d-flex justify-content-between">
+                           {activities.map((activity, index) => {
+                              return (
+                                 <div
+                                    style={{
+                                       backgroundImage: `url(${activity.img})`,
+                                    }}
+                                    key={index}
+                                    className="text-center activityImg2"
+                                 >
+                                    <h3 className="activityTitle">
+                                       {activity.title}
+                                    </h3>
+                                 </div>
+                              )
+                           })}
+                        </div>
+                        <div className="container d-flex justify-content-between">
+                           <Comments
+                              itinerary={_id}
+                              comments={comments}
+                              setComments={setComments}
+                           />
+                        </div>
+                     </>
                   )}
+
                   <button
                      className="blog-slider__button"
                      type="button"

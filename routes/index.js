@@ -68,7 +68,7 @@ router
       passport.authenticate("jwt", { session: false }),
       itinerariesControllers.postComment
    )
+   .put(itinerariesControllers.modifyComment)
 //    .delete(itinerariesControllers.deleteComment)
-//    .put(itinerariesControllers.modifyComment)
 
 module.exports = router

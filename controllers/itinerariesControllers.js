@@ -72,18 +72,45 @@ const itinerariesControllers = {
    postComment: (req, res) => {
       Itinerary.findOneAndUpdate(
          { _id: req.params.id },
-         { $push: { comments: { userId: req.user._id, comment: comment } } },
+         {
+            $push: {
+               comments: { userId: req.user._id, comment: req.body.comment },
+            },
+         },
          { new: true }
       )
          .populate({
             path: "comments",
             populate: {
                path: "userId",
-               select: { firstName: 1, lastName: 1, email: 1, picture: 1 },
+               select: { firstname: 1, lastname: 1, email: 1, picture: 1 },
             },
          })
-         .then((modifyItinerary) =>
+         .then((postComment) =>
             res.json({ success: true, response: postComment })
+         )
+         .catch((err) => res.json({ success: false, response: err }))
+   },
+
+   modifyComment: (req, res) => {
+      Itinerary.findOneAndUpdate(
+         { _id: req.params.id, "comments._id": req.body.idComment },
+         {
+            $set: {
+               "comments.$.comment": req.body.comment,
+            },
+         },
+         { new: true }
+      )
+         .populate({
+            path: "comments",
+            populate: {
+               path: "userId",
+               select: { firstname: 1, lastname: 1, email: 1, picture: 1 },
+            },
+         })
+         .then((modifyComment) =>
+            res.json({ success: true, response: modifyComment })
          )
          .catch((err) => res.json({ success: false, response: err }))
    },
