@@ -38,12 +38,12 @@ const itinerariesActions = {
       }
    },
 
-   like: (itineraryId, token) => {
+   like: (id, token) => {
       return async (dispatch, getState) => {
          try {
-            let res = await axios.post(
-               "http://localhost:4000/api/like/",
-               { itineraryId },
+            let res = await axios.put(
+               "http://localhost:4000/api/like/" + id,
+               {},
                {
                   headers: {
                      Authorization: "Bearer " + token,
@@ -51,9 +51,32 @@ const itinerariesActions = {
                }
             )
             let like = res.data.response
-            console.log(res)
             if (like) {
                return { success: true, response: like }
+            } else {
+               throw new Error("Database Error")
+            }
+         } catch (err) {
+            return { success: false, error: err }
+         }
+      }
+   },
+
+   postComment: (id, token) => {
+      return async (dispatch, getState) => {
+         try {
+            let res = await axios.post(
+               "http://localhost:4000/api/comments/" + id,
+               { comment },
+               {
+                  headers: {
+                     Authorization: "Bearer " + token,
+                  },
+               }
+            )
+            let comment = res.data.response
+            if (comment) {
+               return { success: true, response: comment }
             } else {
                throw new Error("Database Error")
             }

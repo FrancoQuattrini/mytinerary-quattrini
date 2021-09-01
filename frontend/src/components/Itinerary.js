@@ -1,7 +1,7 @@
 import verified from "../assets/verified.png"
 import like from "../assets/like.png"
 import money from "../assets/money2.png"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { connect } from "react-redux"
 import itinerariesActions from "../redux/actions/itinerariesActions"
 
@@ -21,36 +21,36 @@ const Itinerary = (props) => {
       languages,
       _id,
    } = props.data
-   const [likeBoton, setLikeBoton] = useState(true)
-   const [likesItineraries, setLikesItineraries] = useState(likes)
-   useEffect(() => {
-      props
-         .getActivities(_id)
-         .then((res) => {
-            if (res.success) {
-               setActivities(res.response)
-               // setLoading(false)
-               // } else {
-               // props.history.push("/error")
-               // return false
-            }
-         })
-         .catch((err) => {
-            console.log(err)
-            // props.history.push("/error")
-         })
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [])
 
+   const getActivities = () => {
+      if (!viewText && activities.length === 0) {
+         props
+            .getActivities(_id)
+            .then((res) => {
+               if (res.success) {
+                  setActivities(res.response)
+                  // setLoading(false)
+                  // } else {
+                  // props.history.push("/error")
+               }
+            })
+            .catch((err) => {
+               console.log(err)
+               // props.history.push("/error")
+            })
+      }
+      setViewText(!viewText)
+   }
+
+   const [likesItineraries, setLikesItineraries] = useState(likes)
    const likeItinerary = () => {
       if (props.token) {
-         console.log("EXISTE TOKEN")
          props.like(_id, props.token).then((res) => {
-            console.log(res)
+            setLikesItineraries(res.response.likes)
          })
       } else {
-         console.log("NO ESTA TOKEN PARA LIKE")
-         setLikeBoton(false)
+         alert("NO ESTA TOKEN PARA LIKE")
+         // setLikeBoton(false)
       }
    }
 
@@ -68,7 +68,7 @@ const Itinerary = (props) => {
                         className="imgUser mb-4"
                         alt="imgUser"
                      ></img>
-                     <div className="blog-slider__code">
+                     <div className="blog-slider__code d-flex align-items-center justify-content-center">
                         <span className="models nameUser">{nameUser}</span>
 
                         <img
@@ -120,7 +120,9 @@ const Itinerary = (props) => {
                         alt="imgLike"
                         onClick={likeItinerary}
                      ></img>
-                     <span className="blog-slider__code liki">{likes}</span>
+                     <span className="blog-slider__code liki">
+                        {likesItineraries.length}
+                     </span>
                   </div>
                </div>
                <div className="container col-12 flex-column align-items-center">
@@ -146,7 +148,7 @@ const Itinerary = (props) => {
                   <button
                      className="blog-slider__button"
                      type="button"
-                     onClick={() => setViewText(!viewText)}
+                     onClick={getActivities}
                   >
                      {viewText ? "View Less" : "View More"}
                   </button>
@@ -218,7 +220,7 @@ const Itinerary = (props) => {
                            alt="imgLike"
                         ></img>
                         <span className="blog-slider__code pt-3 ps-2">
-                           {likes.length}
+                           {likesItineraries.length}
                         </span>
                      </div>
                   </div>
@@ -247,7 +249,7 @@ const Itinerary = (props) => {
                   <button
                      className="blog-slider__button"
                      type="button"
-                     onClick={() => setViewText(!viewText)}
+                     onClick={getActivities}
                   >
                      {viewText ? "View Less" : "View More"}
                   </button>

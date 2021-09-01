@@ -34,6 +34,7 @@ router
    .put(itinerariesControllers.modifyItinerary)
 
 router.route("/user/signup").post(validator, userControllers.postUser)
+
 router.route("/user/login").post(userControllers.logUser)
 
 router.route("/users").get(userControllers.getUsers)
@@ -55,10 +56,19 @@ router
    .get(activitiesControllers.getActivitiesByItinerary)
 
 router
-   .route("/like")
-   .post(
+   .route("/like/:id")
+   .put(
       passport.authenticate("jwt", { session: false }),
       itinerariesControllers.likeItinerary
    )
+
+router
+   .route("/comments/:id")
+   .post(
+      passport.authenticate("jwt", { session: false }),
+      itinerariesControllers.postComment
+   )
+//    .delete(itinerariesControllers.deleteComment)
+//    .put(itinerariesControllers.modifyComment)
 
 module.exports = router
