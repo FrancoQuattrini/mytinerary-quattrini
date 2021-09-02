@@ -28,6 +28,7 @@ const userControllers = {
                         response: {
                            firstname: user.firstname,
                            picture: user.picture,
+                           email: user.email,
                            token,
                         },
                      })
@@ -51,6 +52,7 @@ const userControllers = {
                   response: {
                      firstname: user.firstname,
                      picture: user.picture,
+                     email: user.email,
                      token,
                   },
                })
@@ -71,7 +73,11 @@ const userControllers = {
    },
 
    verifyToken: (req, res) => {
-      res.json({ firstname: req.user.firstname, picture: req.user.picture })
+      res.json({
+         firstname: req.user.firstname,
+         picture: req.user.picture,
+         email: req.user.email,
+      })
    },
 }
 

@@ -54,7 +54,6 @@ const Itinerary = (props) => {
          })
       } else {
          toast.error("You must be logged in to like a post")
-         // setLikeBoton(false)
       }
    }
 
@@ -152,7 +151,7 @@ const Itinerary = (props) => {
                               )
                            })}
                         </div>
-                        <div className="container-fluid bg-warning">
+                        <div className="container-fluid">
                            <Comments
                               itinerary={_id}
                               comments={comments}

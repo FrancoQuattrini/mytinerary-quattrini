@@ -59,6 +59,7 @@ const usersActions = {
                   token,
                   firstname: res.data.firstname,
                   picture: res.data.picture,
+                  email: res.data.email,
                },
             })
          } catch (err) {

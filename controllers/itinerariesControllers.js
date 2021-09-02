@@ -13,6 +13,13 @@ const itinerariesControllers = {
    getItinerariesByCity: (req, res) => {
       Itinerary.find({ cityId: req.params.id })
          .populate("cityId")
+         .populate({
+            path: "comments",
+            populate: {
+               path: "userId",
+               select: "firstname lastname picture",
+            },
+         })
          .then((itinerariesByCity) =>
             res.json({ success: true, response: itinerariesByCity })
          )
@@ -61,7 +68,7 @@ const itinerariesControllers = {
             } else {
                Itinerary.findOneAndUpdate(
                   { _id: req.params.id },
-                  { $push: { likes: req.user._id } },
+                  { $addToSet: { likes: req.user._id } },
                   { new: true }
                ).then((like) => res.json({ success: true, response: like }))
             }
@@ -83,7 +90,7 @@ const itinerariesControllers = {
             path: "comments",
             populate: {
                path: "userId",
-               select: { firstname: 1, lastname: 1, email: 1, picture: 1 },
+               select: "firstname lastname email picture",
             },
          })
          .then((postComment) =>
@@ -94,7 +101,7 @@ const itinerariesControllers = {
 
    modifyComment: (req, res) => {
       Itinerary.findOneAndUpdate(
-         { _id: req.params.id, "comments._id": req.body.idComment },
+         { "comments._id": req.body.idComment },
          {
             $set: {
                "comments.$.comment": req.body.comment,
@@ -106,28 +113,31 @@ const itinerariesControllers = {
             path: "comments",
             populate: {
                path: "userId",
-               select: { firstname: 1, lastname: 1, email: 1, picture: 1 },
+               select: "firstname lastname email picture",
             },
          })
-         .then((modifyComment) =>
+         .then((modifyComment) => {
+            console.log(modifyComment)
             res.json({ success: true, response: modifyComment })
-         )
+         })
          .catch((err) => res.json({ success: false, response: err }))
    },
 
-   // deleteComment: (req, res) => {
-   //    Itinerary.findOneAndDelete({ _id: req.params.id })
-   //       .then(() => res.json({ success: true, response: "deletedItinerary" }))
-   //       .catch((err) => res.json({ success: false, response: err }))
-   // },
-
-   // modifyComment: (req, res) => {
-   //    Itinerary.findOneAndUpdate({ _id: req.params.id }, { ...req.body })
-   //       .then((modifyItinerary) =>
-   //          res.json({ success: true, response: modifyItinerary })
-   //       )
-   //       .catch((err) => res.json({ success: false, response: err }))
-   // },
+   deleteComment: (req, res) => {
+      Itinerary.findOneAndUpdate(
+         { "comments._id": req.body.idComment },
+         {
+            $pull: {
+               comments: { _id: req.body.idComment },
+            },
+         },
+         { new: true }
+      )
+         .then((deleteComment) => {
+            res.json({ success: true, response: deleteComment })
+         })
+         .catch((err) => res.json({ success: false, response: err }))
+   },
 }
 
 module.exports = itinerariesControllers

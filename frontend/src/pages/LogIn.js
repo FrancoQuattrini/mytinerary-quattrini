@@ -31,7 +31,7 @@ const LogIn = (props) => {
             if (res.success) {
                Swal.fire({
                   icon: "success",
-                  title: "Welcome to MYtineraries",
+                  title: "Welcome to MYtinerary",
                   showConfirmButton: false,
                   timer: 2500,
                   timerProgressBar: true,

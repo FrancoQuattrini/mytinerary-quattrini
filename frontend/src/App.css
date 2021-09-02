@@ -841,3 +841,7 @@ input.form-control:focus {
    margin-top: 1rem;
    padding: 0px 4px;
 }
+
+.picComment {
+   height: 50px;
+}

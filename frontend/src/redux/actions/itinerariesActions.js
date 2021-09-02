@@ -62,21 +62,20 @@ const itinerariesActions = {
       }
    },
 
-   postComment: (id, token) => {
+   postComment: (id, token, comment) => {
       return async (dispatch, getState) => {
          try {
             let res = await axios.post(
                "http://localhost:4000/api/comments/" + id,
-               {},
+               { comment },
                {
                   headers: {
                      Authorization: "Bearer " + token,
                   },
                }
             )
-            let comment = res.data.response
-            if (comment) {
-               return { success: true, response: comment }
+            if (res.data.response) {
+               return { success: true, response: res.data.response }
             } else {
                throw new Error("Database Error")
             }
@@ -94,9 +93,27 @@ const itinerariesActions = {
                { comment, idComment }
             )
             let modifyComment = res.data.response
-            console.log(modifyComment.comment)
             if (modifyComment) {
                return { success: true, response: modifyComment }
+            } else {
+               throw new Error("Database Error")
+            }
+         } catch (err) {
+            return { success: false, error: err }
+         }
+      }
+   },
+
+   deleteComment: (id, idComment) => {
+      return async (dispatch, getState) => {
+         try {
+            let res = await axios.delete(
+               "http://localhost:4000/api/comments/" + id,
+               { idComment }
+            )
+            let deleteComment = res.data.response
+            if (deleteComment) {
+               return { success: true, response: deleteComment }
             } else {
                throw new Error("Database Error")
             }

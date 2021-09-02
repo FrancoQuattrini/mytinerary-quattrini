@@ -69,6 +69,6 @@ router
       itinerariesControllers.postComment
    )
    .put(itinerariesControllers.modifyComment)
-//    .delete(itinerariesControllers.deleteComment)
+   .delete(itinerariesControllers.deleteComment)
 
 module.exports = router
