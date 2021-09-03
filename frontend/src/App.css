@@ -752,7 +752,7 @@ input.form-control {
 input.form-control::placeholder {
    color: white;
    background-color: transparent;
-   font-size: 18px;
+   font-size: 3.6vmin;
    text-align: start;
 }
 
@@ -841,14 +841,20 @@ input.form-control:focus {
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   border-radius: 15px;
+   border-radius: 5px;
+   box-shadow: 3px 10px 20px 0px #0000004d;
+}
+
+.activityImg2:hover {
+   box-shadow: 3px 5px 15px 0px #9a4cf3;
 }
 
 .activityTitle {
-   background-color: rgb(88, 22, 126);
+   background-color: rgba(146, 6, 228, 0.473);
    color: #ffffff;
-   margin-top: 1rem;
+   margin-top: 0.7rem;
    padding: 0px 4px;
+   font-size: 23px;
 }
 
 .picComment {

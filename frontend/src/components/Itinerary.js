@@ -164,9 +164,9 @@ const Itinerary = (props) => {
                                        key={index}
                                        className="activityImg text-center mb-4"
                                     >
-                                       <h3 className="activityTitle">
+                                       <h5 className="activityTitle">
                                           {activity.title}
-                                       </h3>
+                                       </h5>
                                     </div>
                                  )
                               })}
@@ -294,9 +294,9 @@ const Itinerary = (props) => {
                                        key={index}
                                        className="text-center activityImg2"
                                     >
-                                       <h3 className="activityTitle">
+                                       <h5 className="activityTitle">
                                           {activity.title}
-                                       </h3>
+                                       </h5>
                                     </div>
                                  )
                               })}
