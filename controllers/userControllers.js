@@ -29,6 +29,7 @@ const userControllers = {
                            firstname: user.firstname,
                            picture: user.picture,
                            email: user.email,
+                           id: user._id,
                            token,
                         },
                      })
@@ -53,6 +54,7 @@ const userControllers = {
                      firstname: user.firstname,
                      picture: user.picture,
                      email: user.email,
+                     id: user._id,
                      token,
                   },
                })
@@ -77,6 +79,7 @@ const userControllers = {
          firstname: req.user.firstname,
          picture: req.user.picture,
          email: req.user.email,
+         id: req.user._id,
       })
    },
 }

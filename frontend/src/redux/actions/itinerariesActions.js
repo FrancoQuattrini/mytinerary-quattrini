@@ -107,9 +107,11 @@ const itinerariesActions = {
    deleteComment: (id, idComment) => {
       return async (dispatch, getState) => {
          try {
-            let res = await axios.delete(
-               "http://localhost:4000/api/comments/" + id,
-               { idComment }
+            let res = await axios.put(
+               "http://localhost:4000/api/delete/" + id,
+               {
+                  idComment,
+               }
             )
             let deleteComment = res.data.response
             if (deleteComment) {

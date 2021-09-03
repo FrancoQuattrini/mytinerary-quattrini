@@ -60,6 +60,7 @@ const usersActions = {
                   firstname: res.data.firstname,
                   picture: res.data.picture,
                   email: res.data.email,
+                  id: res.data.id,
                },
             })
          } catch (err) {

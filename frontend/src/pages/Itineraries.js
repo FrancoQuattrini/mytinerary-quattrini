@@ -39,7 +39,7 @@ const Itineraries = (props) => {
 
    if (loading) {
       return (
-         <div className="container load d-flex flex-column justify-content-center align-items-center m-5">
+         <div className="loader d-flex flex-column justify-content-center align-items-center">
             <h2 className="loading text-center col-11 pt-5">Loading</h2>
             <img className="col-12 col-md-5" src={Logo} alt="Loader"></img>
             <h2 className="loading text-center col-11">Please wait</h2>
@@ -58,7 +58,7 @@ const Itineraries = (props) => {
          <div className="underC container-fluid p-5 d-flex flex-column align-items-center justify-content-center">
             {props.itineraries.length === 0 ? (
                <div className="container d-flex flex-column align-items-center justify-content-center">
-                  <h2 className="h2Search empty col-12 col-md-9 text-center">
+                  <h2 className="h2Search empty col-12 col-md-9 text-center text-white">
                      It seems there are no itineraries yet!.
                   </h2>
                   <img className="imgEmpty" src={empty} alt="imgEmpty"></img>

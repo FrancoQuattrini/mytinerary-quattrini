@@ -3,10 +3,10 @@ import { connect } from "react-redux"
 import Comment from "./Comment"
 import { useState } from "react"
 import toast from "react-hot-toast"
+import { FaArrowCircleUp } from "react-icons/fa"
 
 const Comments = (props) => {
    const { itinerary, token, comments, setComments } = props
-
    const [inputComment, setInputComment] = useState({ comment: "" })
 
    const inputHandler = (e) => {
@@ -24,7 +24,9 @@ const Comments = (props) => {
       } else {
          props
             .postComment(itinerary, token, inputComment.comment)
-            .then((res) => setComments(res.response.comments))
+            .then((res) => {
+               setComments(res.response.comments)
+            })
          setInputComment({ comment: "" })
       }
    }
@@ -36,31 +38,28 @@ const Comments = (props) => {
    }
 
    const deleteComment = (idComment) => {
-      props.deleteComment(idComment).then((res) => console.log(res))
+      props
+         .deleteComment(itinerary, idComment)
+         .then((res) => setComments(res.response.comments))
    }
 
    const pressEnter = (e) => {
-      if (e.key === "enter") {
+      if (e.key === "Enter") {
          sendComment()
       }
    }
 
    return (
-      <div className="container-fluid">
+      <>
          <h2 className="text-center">Comments</h2>
-         <div className="bg-danger">
-            <div className="container d-flex flex-column">
+         <div>
+            <div className="container-fluid viewMore d-flex flex-column">
                {comments.length === 0 ? (
                   <div>
                      <p>No comments yet</p>
                   </div>
                ) : (
-                  <div
-                     style={{
-                        overflowY: "scroll",
-                        height: "60vh",
-                     }}
-                  >
+                  <div className="divComments">
                      {comments.map((comment) => {
                         return (
                            <Comment
@@ -73,21 +72,23 @@ const Comments = (props) => {
                      })}
                   </div>
                )}
-               <div>
+               <div className="back-input my-4 send-msj">
                   <input
-                     className="inputComment"
+                     className="form-control"
                      type="text"
-                     //  placeholder={input.inputcomment}
-                     onKeyPress={pressEnter}
+                     placeholder="Leave a message here..."
                      value={inputComment.comment}
-                     //  disabled={input.disabled}
                      onChange={inputHandler}
+                     onKeyPress={pressEnter}
                   />
-                  <button onClick={sendComment}>SEND</button>
+                  <FaArrowCircleUp
+                     className="iconSendComment"
+                     onClick={sendComment}
+                  />
                </div>
             </div>
          </div>
-      </div>
+      </>
    )
 }
 
@@ -96,6 +97,7 @@ const mapStateToProps = (state) => {
       token: state.users.token,
    }
 }
+
 const mapDispatchToProps = {
    postComment: itinerariesActions.postComment,
    modifyComment: itinerariesActions.modifyComment,

@@ -69,6 +69,7 @@ router
       itinerariesControllers.postComment
    )
    .put(itinerariesControllers.modifyComment)
-   .delete(itinerariesControllers.deleteComment)
+
+router.route("/delete/:id").put(itinerariesControllers.deleteComment)
 
 module.exports = router

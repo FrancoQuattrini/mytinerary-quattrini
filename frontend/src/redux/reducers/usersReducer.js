@@ -4,6 +4,7 @@ const usersReducer = (
       firstname: null,
       picture: null,
       email: null,
+      id: null,
    },
    action
 ) => {
@@ -19,6 +20,7 @@ const usersReducer = (
             firstname: action.payload.firstname,
             picture: action.payload.picture,
             email: action.payload.email,
+            id: action.payload.id,
          }
       case "LOG_OUT":
          localStorage.clear()

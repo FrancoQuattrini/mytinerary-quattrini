@@ -1,11 +1,11 @@
 import verified from "../assets/verified.png"
-import like from "../assets/like.png"
 import money from "../assets/money2.png"
 import { useState } from "react"
 import { connect } from "react-redux"
 import itinerariesActions from "../redux/actions/itinerariesActions"
 import Comments from "./Comments"
 import toast, { Toaster } from "react-hot-toast"
+import { FaRegStar, FaStar } from "react-icons/fa"
 
 const Itinerary = (props) => {
    const [viewText, setViewText] = useState(false)
@@ -25,6 +25,7 @@ const Itinerary = (props) => {
    } = props.data
 
    const [comments, setComments] = useState(props.data.comments)
+   const [liked, setLiked] = useState(likes.includes(props.id))
 
    const getActivities = () => {
       if (!viewText && activities.length === 0) {
@@ -40,7 +41,7 @@ const Itinerary = (props) => {
             })
             .catch((err) => {
                console.log(err)
-               // props.history.push("/error")
+               props.history.push("/error")
             })
       }
       setViewText(!viewText)
@@ -51,6 +52,7 @@ const Itinerary = (props) => {
       if (props.token) {
          props.like(_id, props.token).then((res) => {
             setLikesItineraries(res.response.likes)
+            setLiked(!liked)
          })
       } else {
          toast.error("You must be logged in to like a post")
@@ -120,12 +122,14 @@ const Itinerary = (props) => {
                            </p>
                         ))}
                      </span>
-                     <img
-                        src={like}
-                        className="like mt-3"
-                        alt="imgLike"
-                        onClick={likeItinerary}
-                     ></img>
+                     {!liked ? (
+                        <FaRegStar
+                           className="like mt-3"
+                           onClick={likeItinerary}
+                        />
+                     ) : (
+                        <FaStar className="like mt-3" onClick={likeItinerary} />
+                     )}
                      <span className="blog-slider__code liki">
                         {likesItineraries.length}
                      </span>
@@ -134,7 +138,7 @@ const Itinerary = (props) => {
                <div className="container col-12 flex-column align-items-center">
                   {viewText && (
                      <>
-                        <div className="container-fluid">
+                        <div className="container-fluid viewMore">
                            {activities.map((activity, index) => {
                               return (
                                  <div
@@ -151,7 +155,7 @@ const Itinerary = (props) => {
                               )
                            })}
                         </div>
-                        <div className="container-fluid">
+                        <div className="container-fluid viewMore">
                            <Comments
                               itinerary={_id}
                               comments={comments}
@@ -228,12 +232,14 @@ const Itinerary = (props) => {
                         ))}
                      </span>
                      <div className="blog-slider__code d-flex justify-content-center align-items-center my-3">
-                        <img
-                           onClick={likeItinerary}
-                           src={like}
-                           className="like"
-                           alt="imgLike"
-                        ></img>
+                        {!liked ? (
+                           <FaRegStar
+                              className="like"
+                              onClick={likeItinerary}
+                           />
+                        ) : (
+                           <FaStar className="like" onClick={likeItinerary} />
+                        )}
                         <span className="blog-slider__code pt-3 ps-2">
                            {likesItineraries.length}
                         </span>
@@ -261,7 +267,7 @@ const Itinerary = (props) => {
                               )
                            })}
                         </div>
-                        <div className="container d-flex justify-content-between">
+                        <div className="container d-flex flex-column">
                            <Comments
                               itinerary={_id}
                               comments={comments}
@@ -288,6 +294,7 @@ const Itinerary = (props) => {
 const mapStateToProps = (state) => {
    return {
       token: state.users.token,
+      id: state.users.id,
    }
 }
 

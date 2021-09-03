@@ -117,7 +117,6 @@ const itinerariesControllers = {
             },
          })
          .then((modifyComment) => {
-            console.log(modifyComment)
             res.json({ success: true, response: modifyComment })
          })
          .catch((err) => res.json({ success: false, response: err }))
@@ -133,6 +132,13 @@ const itinerariesControllers = {
          },
          { new: true }
       )
+         .populate({
+            path: "comments",
+            populate: {
+               path: "userId",
+               select: "firstname lastname email picture",
+            },
+         })
          .then((deleteComment) => {
             res.json({ success: true, response: deleteComment })
          })
