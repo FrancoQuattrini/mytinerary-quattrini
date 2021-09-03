@@ -513,6 +513,13 @@ h2.error,
    padding: 5px;
 }
 
+.loadingAct {
+   color: rgb(209, 30, 200);
+   font-size: 4vmin;
+   width: 100%;
+   padding: 5px;
+}
+
 .load-infoc {
    height: 100vh;
 }
@@ -679,12 +686,8 @@ h2.error,
 }
 
 .imgEmpty {
-   height: 10rem;
+   height: 16rem;
    margin: 3rem;
-}
-
-.empty {
-   font-weight: 600;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -943,4 +946,26 @@ input.form-control:focus {
 
 .viewMore {
    padding: 0px !important;
+}
+
+.noComments {
+   font-size: 20px;
+   font-weight: 600;
+   color: slategrey;
+}
+
+.titlesIti {
+   font-weight: 600;
+   padding: 1.5rem;
+   color: slateblue;
+}
+
+.emptyII {
+   width: 100vw;
+   background-color: white;
+}
+
+.empty {
+   font-weight: 600;
+   color: rgb(200, 59, 243) !important;
 }

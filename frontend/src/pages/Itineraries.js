@@ -8,9 +8,11 @@ import Itinerary from "../components/Itinerary"
 import { connect } from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
 import itinerariesActions from "../redux/actions/itinerariesActions"
-import empty from "../assets/empty.png"
+import empty from "../assets/astronaut.gif"
 
 const Itineraries = (props) => {
+   const [loading, setLoading] = useState(true)
+
    const getCity = props.cities.find(
       (city) => city._id === props.match.params.id
    )
@@ -18,7 +20,6 @@ const Itineraries = (props) => {
       props.history.push("/cities")
    }
 
-   const [loading, setLoading] = useState(true)
    useEffect(() => {
       props
          .getItineraries(props.match.params.id)
@@ -58,14 +59,22 @@ const Itineraries = (props) => {
          <div className="underC container-fluid p-5 d-flex flex-column align-items-center justify-content-center">
             {props.itineraries.length === 0 ? (
                <div className="container d-flex flex-column align-items-center justify-content-center">
-                  <h2 className="h2Search empty col-12 col-md-9 text-center text-white">
-                     It seems there are no itineraries yet!.
+                  <h2 className="h2Search empty col-12 col-md-9 text-center pb-5">
+                     It seems there are no itineraries yet!
                   </h2>
-                  <img className="imgEmpty" src={empty} alt="imgEmpty"></img>
+                  <div className="emptyII d-flex justify-content-center">
+                     <img className="imgEmpty" src={empty} alt="imgEmpty"></img>
+                  </div>
                </div>
             ) : (
                props.itineraries.map((data) => {
-                  return <Itinerary data={data} key={data.nameUser} />
+                  return (
+                     <Itinerary
+                        data={data}
+                        history={props.history}
+                        key={data.nameUser}
+                     />
+                  )
                })
             )}
 

@@ -6,6 +6,7 @@ import itinerariesActions from "../redux/actions/itinerariesActions"
 import Comments from "./Comments"
 import toast, { Toaster } from "react-hot-toast"
 import { FaRegStar, FaStar } from "react-icons/fa"
+import Logo from "../assets/astroLoad.gif"
 
 const Itinerary = (props) => {
    const [viewText, setViewText] = useState(false)
@@ -26,6 +27,7 @@ const Itinerary = (props) => {
 
    const [comments, setComments] = useState(props.data.comments)
    const [liked, setLiked] = useState(likes.includes(props.id))
+   const [likesItineraries, setLikesItineraries] = useState(likes)
 
    const getActivities = () => {
       if (!viewText && activities.length === 0) {
@@ -34,9 +36,8 @@ const Itinerary = (props) => {
             .then((res) => {
                if (res.success) {
                   setActivities(res.response)
-                  // setLoading(false)
-                  // } else {
-                  // props.history.push("/error")
+               } else {
+                  props.history.push("/error")
                }
             })
             .catch((err) => {
@@ -47,7 +48,6 @@ const Itinerary = (props) => {
       setViewText(!viewText)
    }
 
-   const [likesItineraries, setLikesItineraries] = useState(likes)
    const likeItinerary = () => {
       if (props.token) {
          props.like(_id, props.token).then((res) => {
@@ -138,23 +138,41 @@ const Itinerary = (props) => {
                <div className="container col-12 flex-column align-items-center">
                   {viewText && (
                      <>
-                        <div className="container-fluid viewMore">
-                           {activities.map((activity, index) => {
-                              return (
-                                 <div
-                                    style={{
-                                       backgroundImage: `url(${activity.img})`,
-                                    }}
-                                    key={index}
-                                    className="activityImg text-center mb-4"
-                                 >
-                                    <h3 className="activityTitle">
-                                       {activity.title}
-                                    </h3>
-                                 </div>
-                              )
-                           })}
-                        </div>
+                        <h2 className="text-center titlesIti">Activities</h2>
+                        {activities.length === 0 ? (
+                           <div className="d-flex flex-column justify-content-center align-items-center">
+                              <h2 className="loadingAct text-center col-11">
+                                 Loading
+                              </h2>
+                              <img
+                                 className="col-12 col-md-5"
+                                 src={Logo}
+                                 alt="Loader"
+                              ></img>
+                              <h2 className="loadingAct text-center col-11">
+                                 Please wait
+                              </h2>
+                           </div>
+                        ) : (
+                           <div className="container-fluid viewMore">
+                              {activities.map((activity, index) => {
+                                 return (
+                                    <div
+                                       style={{
+                                          backgroundImage: `url(${activity.img})`,
+                                       }}
+                                       key={index}
+                                       className="activityImg text-center mb-4"
+                                    >
+                                       <h3 className="activityTitle">
+                                          {activity.title}
+                                       </h3>
+                                    </div>
+                                 )
+                              })}
+                           </div>
+                        )}
+
                         <div className="container-fluid viewMore">
                            <Comments
                               itinerary={_id}
@@ -250,23 +268,40 @@ const Itinerary = (props) => {
                   <p></p>
                   {viewText && (
                      <>
-                        <div className="container d-flex justify-content-between">
-                           {activities.map((activity, index) => {
-                              return (
-                                 <div
-                                    style={{
-                                       backgroundImage: `url(${activity.img})`,
-                                    }}
-                                    key={index}
-                                    className="text-center activityImg2"
-                                 >
-                                    <h3 className="activityTitle">
-                                       {activity.title}
-                                    </h3>
-                                 </div>
-                              )
-                           })}
-                        </div>
+                        <h2 className="text-center titlesIti">Activities</h2>
+                        {activities.length === 0 ? (
+                           <div className="d-flex flex-column justify-content-center align-items-center">
+                              <h2 className="loadingAct text-center col-11">
+                                 Loading
+                              </h2>
+                              <img
+                                 className="col-12 col-md-5"
+                                 src={Logo}
+                                 alt="Loader"
+                              ></img>
+                              <h2 className="loadingAct text-center col-11">
+                                 Please wait
+                              </h2>
+                           </div>
+                        ) : (
+                           <div className="container d-flex justify-content-between">
+                              {activities.map((activity, index) => {
+                                 return (
+                                    <div
+                                       style={{
+                                          backgroundImage: `url(${activity.img})`,
+                                       }}
+                                       key={index}
+                                       className="text-center activityImg2"
+                                    >
+                                       <h3 className="activityTitle">
+                                          {activity.title}
+                                       </h3>
+                                    </div>
+                                 )
+                              })}
+                           </div>
+                        )}
                         <div className="container d-flex flex-column">
                            <Comments
                               itinerary={_id}
@@ -276,7 +311,6 @@ const Itinerary = (props) => {
                         </div>
                      </>
                   )}
-
                   <button
                      className="blog-slider__button"
                      type="button"

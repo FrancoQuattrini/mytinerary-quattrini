@@ -51,12 +51,14 @@ const Comments = (props) => {
 
    return (
       <>
-         <h2 className="text-center">Comments</h2>
+         <h2 className="text-center titlesIti">Comments</h2>
          <div>
             <div className="container-fluid viewMore d-flex flex-column">
                {comments.length === 0 ? (
                   <div>
-                     <p>No comments yet</p>
+                     <p className="noComments">
+                        No comments yet. Be the first ↓
+                     </p>
                   </div>
                ) : (
                   <div className="divComments">
