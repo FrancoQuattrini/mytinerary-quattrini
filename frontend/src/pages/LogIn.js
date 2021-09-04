@@ -136,7 +136,7 @@ const LogIn = (props) => {
                   <h5 className="text-white text-center">Or</h5>
                   <div className="text-center">
                      <GoogleLogin
-                        clientId="332293588539-2c447r49jfh9gupfj17mfm5nb3npcbj7.apps.googleusercontent.com"
+                        clientId="332293588539-201lm9fb8pkgcj7rh8eqt3j63jfh95vp.apps.googleusercontent.com"
                         buttonText="Log In with Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
