@@ -16,11 +16,12 @@ const Itineraries = (props) => {
    const getCity = props.cities.find(
       (city) => city._id === props.match.params.id
    )
-   if (!getCity) {
-      props.history.push("/cities")
-   }
 
    useEffect(() => {
+      if (!getCity) {
+         props.history.push("/cities")
+         return false
+      }
       props
          .getItineraries(props.match.params.id)
          .then((res) => {
