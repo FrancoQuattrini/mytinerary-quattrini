@@ -5,7 +5,7 @@ const usersActions = {
       return async (dispatch) => {
          try {
             let res = await axios.post(
-               "http://localhost:4000/api/user/signup",
+               "https://mytinerary-quattrini.herokuapp.com/api/user/signup",
                newUser
             )
             if (res.data.success) {
@@ -24,7 +24,7 @@ const usersActions = {
       return async (dispatch) => {
          try {
             let res = await axios.post(
-               "http://localhost:4000/api/user/login",
+               "https://mytinerary-quattrini.herokuapp.com/api/user/login",
                login
             )
             if (res.data.success) {
@@ -48,11 +48,14 @@ const usersActions = {
    logInLS: (token) => {
       return async (dispatch, getState) => {
          try {
-            let res = await axios.get("http://localhost:4000/api/verifytoken", {
-               headers: {
-                  Authorization: "Bearer " + token,
-               },
-            })
+            let res = await axios.get(
+               "https://mytinerary-quattrini.herokuapp.com/api/verifytoken",
+               {
+                  headers: {
+                     Authorization: "Bearer " + token,
+                  },
+               }
+            )
             dispatch({
                type: "ACTION_USER",
                payload: {

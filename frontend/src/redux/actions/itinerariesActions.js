@@ -5,7 +5,8 @@ const itinerariesActions = {
       return async (dispatch) => {
          try {
             let res = await axios.get(
-               "http://localhost:4000/api/itineraries/" + id
+               "https://mytinerary-quattrini.herokuapp.com/api/itineraries/" +
+                  id
             )
             let itineraries = res.data.response
             if (itineraries) {
@@ -24,7 +25,7 @@ const itinerariesActions = {
       return async () => {
          try {
             let res = await axios.get(
-               "http://localhost:4000/api/activities/" + id
+               "https://mytinerary-quattrini.herokuapp.com/api/activities/" + id
             )
             let activities = res.data.response
             if (activities) {
@@ -42,7 +43,7 @@ const itinerariesActions = {
       return async (dispatch, getState) => {
          try {
             let res = await axios.put(
-               "http://localhost:4000/api/like/" + id,
+               "https://mytinerary-quattrini.herokuapp.com/api/like/" + id,
                {},
                {
                   headers: {
@@ -66,7 +67,7 @@ const itinerariesActions = {
       return async (dispatch, getState) => {
          try {
             let res = await axios.post(
-               "http://localhost:4000/api/comments/" + id,
+               "https://mytinerary-quattrini.herokuapp.com/api/comments/" + id,
                { comment },
                {
                   headers: {
@@ -89,7 +90,7 @@ const itinerariesActions = {
       return async (dispatch, getState) => {
          try {
             let res = await axios.put(
-               "http://localhost:4000/api/comments/" + id,
+               "https://mytinerary-quattrini.herokuapp.com/api/comments/" + id,
                { comment, idComment }
             )
             let modifyComment = res.data.response
@@ -108,7 +109,7 @@ const itinerariesActions = {
       return async (dispatch, getState) => {
          try {
             let res = await axios.put(
-               "http://localhost:4000/api/delete/" + id,
+               "https://mytinerary-quattrini.herokuapp.com/api/delete/" + id,
                {
                   idComment,
                }
