@@ -15,7 +15,6 @@ import { BiWorld } from "react-icons/bi"
 import { BsEye, BsEyeSlash } from "react-icons/bs"
 
 const SignUp = (props) => {
-   const [countries, setCountries] = useState([])
    const [newUser, setNewUser] = useState({
       firstname: "",
       lastname: "",
