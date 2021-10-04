@@ -2,8 +2,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Back from "../assets/signup.jpg"
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useState } from "react"
 import Swal from "sweetalert2"
 import { connect } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
@@ -25,12 +24,24 @@ const SignUp = (props) => {
       picture: "",
       country: "",
    })
-   useEffect(() => {
-      axios
-         .get("https://restcountries.eu/rest/v2/all?fields=name")
-         .then((res) => setCountries(res.data))
-      return false
-   }, [])
+
+   const countries = [
+      { id: 1, name: "Argentina" },
+      { id: 2, name: "Brazil" },
+      { id: 3, name: "Chile" },
+      { id: 4, name: "Egypt" },
+      { id: 5, name: "England" },
+      { id: 6, name: "France" },
+      { id: 7, name: "Hungary" },
+      { id: 8, name: "Italy" },
+      { id: 9, name: "Japan" },
+      { id: 10, name: "Malaysia" },
+      { id: 11, name: "Mexico" },
+      { id: 12, name: "Netherlands" },
+      { id: 13, name: "Russia" },
+      { id: 14, name: "Spain" },
+      { id: 15, name: "United States of America" },
+   ]
 
    const inputHandler = (e) => {
       setNewUser({
