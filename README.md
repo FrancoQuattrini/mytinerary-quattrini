@@ -16,7 +16,7 @@ You can see the web at the following link: [MYtinerary-Quattrini](https://mytine
 
 ## Installation 🔧
 
-Clone repository and root folder (backend) and frontend folder, do the following:
+Clone the repository and in the root folder (backend) and the frontend folder, do the following:
 
 ```
 # Install dependencies
